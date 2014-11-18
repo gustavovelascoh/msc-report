@@ -1,0 +1,39 @@
+%
+\documentclass{book}
+
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish]{babel}
+%\usepackage[spanish]{isodate}
+\usepackage[final]{listings}
+\usepackage{courier}
+
+\usepackage[pdftex]{graphicx}
+
+%\renewcommand{\chaptername}{Capítulo}
+\renewcommand{\figurename}{Figure}
+
+\lstset{	
+	basicstyle=\footnotesize\ttfamily,
+	language=bash,
+	breaklines=true,
+	fontadjust=true
+}
+
+\begin{document}
+
+\title{Multisensor Architecture for an Intersection Management System}
+\author{Gustavo Velasco-Hernández}
+\date{\today}
+\maketitle
+
+\tableofcontents
+\setcounter{tocdepth}{3}
+
+\input{ch1-introduction}
+\input{ch2-mdf_ims}
+%\input{CH3-ES}
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}
