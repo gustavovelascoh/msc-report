@@ -10,7 +10,7 @@
 \usepackage[pdftex]{graphicx}
 
 %\renewcommand{\chaptername}{Capítulo}
-\renewcommand{\figurename}{Figure}
+%\renewcommand{\figurename}{Figure}
 
 \lstset{	
 	basicstyle=\footnotesize\ttfamily,
@@ -22,7 +22,13 @@
 \begin{document}
 
 \title{Multisensor Architecture for an Intersection Management System}
+\vfill
+\vfill
+\vfill
 \author{Gustavo Velasco-Hernández}
+\vfill
+\vfill
+\vfill
 \date{\today}
 \maketitle
 
@@ -30,10 +36,13 @@
 \setcounter{tocdepth}{3}
 
 \input{ch1-introduction}
+
+\chapter [Sensor Fusion and IMS]{Multisensor Data Fusion and Intersection Management Systems}
 \input{ch2-mdf_ims}
 %\input{CH3-ES}
 
-\bibliographystyle{plain}
+\bibliographystyle{abbrv}
 \bibliography{bibliography}
+%\bibliography{ref}
 
 \end{document}
