@@ -8,6 +8,8 @@
 \usepackage{courier}
 
 \usepackage[pdftex]{graphicx}
+\usepackage[toc,page]{appendix}
+\usepackage[nottoc]{tocbibind}
 
 %\renewcommand{\chaptername}{Capítulo}
 %\renewcommand{\figurename}{Figure}
@@ -35,14 +37,24 @@
 \tableofcontents
 \setcounter{tocdepth}{3}
 
+\chapter {Introduction}
 \input{ch1-introduction}
 
 \chapter [Sensor Fusion and IMS]{Multisensor Data Fusion and Intersection Management Systems}
 \input{ch2-mdf_ims}
+
+\chapter {Architecture Description and System Specification}
 \input{ch3-arch_sys}
+
+\begin{appendices}
+	\chapter {Vehicular Environment Simulators}
+	
+\end{appendices}
 
 \bibliographystyle{abbrv}
 \bibliography{bibliography}
 %\bibliography{ref}
+
+
 
 \end{document}
