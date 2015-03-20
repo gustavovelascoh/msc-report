@@ -92,6 +92,7 @@ In addition to models previously mentioned, there exists more proposal for data 
 
 
 \begin{table}
+\footnotesize
 \centering
 \begin{tabular}{|c | c|}
 \hline
@@ -113,6 +114,7 @@ In addition to models previously mentioned, there exists more proposal for data 
 \label{fusionModelsClas}
 \end{table}
 
+
 \subsection{Algorithms in Data Fusion}
 
 Different types of algorithms have been used in implementing data fusion systems, depending on a variety of conditions like, level of fusion, type of the data, nature of environment, etc. Constrains like processing and memory limitations, centralised or distributed schemes, human-interactive or completely autonomous process, also determine which algorithms should be used in fusion process.
@@ -121,7 +123,31 @@ Luo in \cite{Luo2011} propose a classification for fusion algorithms based on th
 
 Khaleghi in \cite{Khaleghi2013} describes a classification for fusion algorithms based on challenging problems that arise from the data to be fused, due to the variety of sensors and the nature of the application environment. This classification is not on the algorithms directly, but on the theory or framework in which they originate. Four types of data are enumerated: Imperfect data, correlated data, inconsistent data and disparate data. For thi
 
-
+\begin{table}
+\footnotesize
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{2}{|c|}{Low level fusion} & Medium level fusion & High level fusion \\
+\hline
+\multicolumn{2}{|c|}{Estimation methods} & Classification methods & Inference methods \\
+\hline
+Recursive: & Covariance based: & Parametric templates & Bayesian inference \\
+\parbox{2cm}{	 
+	\begin{itemize}
+		\item Clustering
+		\item KL Transform
+		\item Markov Chains
+		\item Kalman Filtering
+		\item AdaBoost
+	\end{itemize}
+	}
+ & & & \\
+\hline
+\end{tabular}
+\caption{Classification of fusion algorithms}
+\label{fusionAlgClas}
+\end{table}
 
 
 
