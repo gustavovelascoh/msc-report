@@ -80,22 +80,22 @@ Also, they made a clear distinction between multisensor fusion and multisensor i
 
 Elmenreich in \cite{Elmenreich2007} classify fusion models in three categories: Abstract models, generic architectures and rigid architectures. Abstract model are not intended to show how to implement a sensor fusion system, but to explain which processes are done in it. Generic architectures gives an outline on how a system could be implemented in an application, but do not specify what type of hardware, database or communication system could be used. Finally, rigid architectures, are a good guide for implementation  of data fusion in certain applications, at the cost that several design decisions have been already taken, making expensive the migration to another architecture. 
 
-In addition to models previously mentioned, there exists more proposal for data fusion architectures in literature, as can be viewed in figure \ref{fusionModelsClas}.
+In addition to models previously mentioned, there exists more proposal for data fusion architectures in literature, as can be viewed in table \ref{fusionModelsClas}.
 
 % TODO: Change for a table
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=0.6]{fig/2/fusionModelsClas.png}
-\caption{Classification of some data fusion models}
-\label{fusionModelsClas}
-\end{figure}
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=0.6]{fig/2/fusionModelsClas.png}
+%\caption{Classification of some data fusion models}
+%\label{fusionModelsClas}
+%\end{figure}
 
 
 \begin{table}
 \centering
-\begin{tabular}{c c}
-Category & Data Fusion Model \\
-
+\begin{tabular}{|c | c|}
+\hline
+\textbf{Category} & \textbf{Data Fusion Model} \\
 \hline
 \multirow{2}{*}{Abstract Model} & Waterfall Model \cite{Harris1998} \\
 & Boyd Loop \cite{Boyd1987} \\
@@ -109,7 +109,8 @@ Category & Data Fusion Model \\
 & Time-triggered Model \cite{Elmenreich2001} \\
 \hline
 \end{tabular}
-\caption{Classification of data fusion models.}
+\caption{Classification of data fusion models}
+\label{fusionModelsClas}
 \end{table}
 
 \subsection{Algorithms in Data Fusion}
