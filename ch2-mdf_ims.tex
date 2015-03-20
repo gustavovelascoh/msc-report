@@ -90,9 +90,33 @@ In addition to models previously mentioned, there exists more proposal for data 
 \label{fusionModelsClas}
 \end{figure}
 
+
+\begin{table}
+\centering
+\begin{tabular}{c c}
+Category & Data Fusion Model \\
+
+\hline
+\multirow{2}{*}{Abstract Model} & Waterfall Model \cite{Harris1998} \\
+& Boyd Loop \cite{Boyd1987} \\
+\hline
+\multirow{3}{*}{Generic Architecture} & JDL Model \cite{White1991} \\
+& Multisensor Fusion Integration Model \cite{Luo1989} \\
+& Omnibus model \cite{Bedworth2000} \\
+\hline
+\multirow{3}{*}{Rigid Architecture} & LAAS Architecture \cite{Alami1998} \\
+& DFuse Architecture \cite{Kumar2003} \\
+& Time-triggered Model \cite{Elmenreich2001} \\
+\hline
+\end{tabular}
+\caption{Classification of data fusion models.}
+\end{table}
+
 \subsection{Algorithms in Data Fusion}
 
 Different types of algorithms have been used in implementing data fusion systems, depending on a variety of conditions like, level of fusion, type of the data, nature of environment, etc. Constrains like processing and memory limitations, centralised or distributed schemes, human-interactive or completely autonomous process, also determine which algorithms should be used in fusion process.
+
+Luo in \cite{Luo2011} propose a classification for fusion algorithms based on the level of fusion. Low-level fusion refers to the merge of raw data or signals, mid-level fusion refers to the fusion of features and High-level fusion refers to the process of fuse decisions. 
 
 Khaleghi in \cite{Khaleghi2013} describes a classification for fusion algorithms based on challenging problems that arise from the data to be fused, due to the variety of sensors and the nature of the application environment. This classification is not on the algorithms directly, but on the theory or framework in which they originate. Four types of data are enumerated: Imperfect data, correlated data, inconsistent data and disparate data. For thi
 
@@ -101,12 +125,13 @@ Khaleghi in \cite{Khaleghi2013} describes a classification for fusion algorithms
 
 
 
-%\begin{figure}[ht!]
-%\centering
-%\includegraphics[scale=0.275]{fig/2/fusionAlg.png}
-%\caption{Fusion algorithms based on level of fusion. (from \cite{Luo2011})}
-%\label{fusionAlgs}
-%\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.175]{fig/2/ims_graph.png}
+\caption{Fusion algorithms based on level of fusion. (from \cite{Luo2011})}
+\label{fusionAlgs}
+\end{figure}
 
 %\subsection{Laser and Video Data Fusion}
 
