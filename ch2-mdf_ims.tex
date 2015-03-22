@@ -39,7 +39,7 @@ Harris and Markin in \cite{Harris1998} and CITE, proposed a model named Waterfal
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.4]{fig/2/WaterfallModel.png}
-\caption{Waterfall model. (from \cite{Esteban2005}).}
+\caption{Waterfall model (from \cite{Esteban2005}).}
 \label{WaterfallModel}
 \end{figure}
 
@@ -119,36 +119,99 @@ In addition to models previously mentioned, there exists more proposal for data 
 
 Different types of algorithms have been used in implementing data fusion systems, depending on a variety of conditions like, level of fusion, type of the data, nature of environment, etc. Constrains like processing and memory limitations, centralised or distributed schemes, human-interactive or completely autonomous process, also determine which algorithms should be used in fusion process.
 
-Luo in \cite{Luo2011} propose a classification for fusion algorithms based on the level of fusion. Low-level fusion refers to the merge of raw data or signals, mid-level fusion refers to the fusion of features and High-level fusion refers to the process of fuse decisions. 
+Luo in \cite{Luo2011} propose a classification for fusion algorithms based on the level of fusion. Low-level fusion refers to the merge of raw data or signals, mid-level fusion refers to the fusion of features and High-level fusion refers to the process of fuse decisions. Khaleghi in \cite{Khaleghi2013} describes a classification for fusion algorithms based on challenging problems that arise from the data to be fused, due to the variety of sensors and the nature of the application environment. This classification is not on the algorithms directly, but on the theory or framework in which they originate. Four types of data are enumerated: Imperfect data, correlated data, inconsistent data and disparate data. These two approaches of fusion algorithms classification are summarized in tables \ref{fusionAlgClasLuo} and \ref{fusionAlgClasKhaleghi}.
 
-Khaleghi in \cite{Khaleghi2013} describes a classification for fusion algorithms based on challenging problems that arise from the data to be fused, due to the variety of sensors and the nature of the application environment. This classification is not on the algorithms directly, but on the theory or framework in which they originate. Four types of data are enumerated: Imperfect data, correlated data, inconsistent data and disparate data. For thi
-
-\begin{table}
+\begin{table}[ht!]
 \footnotesize
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline
-\multicolumn{2}{|c|}{Low level fusion} & Medium level fusion & High level fusion \\
+\multicolumn{2}{|c|}{\textbf{Low level fusion}} & \textbf{Medium level fusion} & \textbf{High level fusion} \\
 \hline
-\multicolumn{2}{|c|}{Estimation methods} & Classification methods & Inference methods \\
+\multicolumn{2}{|c|}{\textit{Estimation methods}} & \textit{Classification methods} & \textit{Inference methods} \\
 \hline
-Recursive: & Covariance based: & Parametric templates & Bayesian inference \\
-\parbox{2cm}{	 
-	\begin{itemize}
-		\item Clustering
-		\item KL Transform
-		\item Markov Chains
-		\item Kalman Filtering
-		\item AdaBoost
+\parbox{2.5cm}{
+	Recursive:
+	\begin{itemize}[leftmargin=.07in]
+		\item Kalman filter
+		\item Extended Kalman filter
+	\end{itemize}
+	Non-Recursive:
+	\begin{itemize}[leftmargin=.07in]
+		\item Weighted average
+		\item Least squares
 	\end{itemize}
 	}
- & & & \\
+ & 
+ \parbox{2.5cm}{	 
+ 	Covariance-based:
+	\begin{itemize}[leftmargin=.07in]
+		\item Cross covariance
+		\item Covariance intersection
+		\item Covariance union
+	\end{itemize}
+	}
+&
+ \parbox{3cm}{	 
+	\begin{itemize}[leftmargin=.07in, noitemsep]
+		\item Parametric templates
+		\item Cluster analysis
+		\item K-means clustering
+		\item Learning vector quantization
+		\item Kohonen feature map
+		\item Artificial neural networks
+		\item Support vector machines
+	\end{itemize}
+	}
+&
+\parbox{3cm}{	 
+	\begin{itemize}[leftmargin=.07in, noitemsep]
+		\item Bayesian inference
+		\item Particle filters
+		\item Dempster-Shafer theory
+		\item Expert systems
+		\item Fuzzy logic
+	\end{itemize}
+	} \\
 \hline
 \end{tabular}
-\caption{Classification of fusion algorithms}
-\label{fusionAlgClas}
+\caption{Classification of fusion algorithms based on level of fusion}
+\label{fusionAlgClasLuo}
 \end{table}
 
+\begin{table}[ht!]
+\footnotesize
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Data Problem} & \textbf{Framework} \\
+\hline
+\multirow{7}{*}{Imperfection} & Probabilistic \\
+& Evidential \\
+& Fuzzy reasoning \\
+& Possibilistic \\
+& Rough set theoretic \\
+& HYbridization \\
+& Random set theoretic \\
+\hline
+\multirow{2}{*}{Correlation} & Correlation elimination \\
+& Correlation presence \\
+\hline
+\multirow{6}{*}{Inconsistency} & Sensor validation \\
+& Stochastic sensor modeling\\
+& Prediction \\
+& Augmented state framework \\
+& Combination rules \\
+& Dempsters' rule \\
+\hline
+\multirow{3}{*}{Disparateness} & Dempster-Shafer theoretic framework \\
+& Human-centered data fusion \\
+& Hard-soft data fusion \\
+\hline
+\end{tabular}
+\caption{Classification of fusion algorithms based on challeging problems in data}
+\label{fusionAlgClasKhaleghi}
+\end{table}
 
 
 
