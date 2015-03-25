@@ -229,27 +229,27 @@ One of the most desirable scenarios to improve efficiency and safety is an inter
 
 %\section[Types of IMS]{Types of Intersection Management Systems}
 
-Different types of applications and systems are conceived to address these issues. Some tasks those systems realize are intersection monitoring, vehicles detection, incident warning, collision avoidance, among others. Communication approaches in these systems are based in the interaction between vehicles and infrastructure, commonly divided in three groups: Vehicle-to-vehicle communication (V2V) , Vehicle-to-infrastructure communication (V2I) and the combination of both of them (V2X).
+Different types of applications and systems are conceived to address these issues. Some tasks performed by those are intersection monitoring, vehicles detection, incident warning, collision avoidance, among others. A typical Intersection Management System is composed by three main components: Data source, that could be infrastructure sensors, like inductive loops, range sensors or cameras, along vehicle sensors and traveling data; decision system, which is the core of the whole system, is in charge of analyse and process information provided by infrastructure, vehicles and authorities in order identify objects, recognise patterns, predict future incidents, control traffic and generate safe decisions and warnings alerts; and finally, is the presentation and displaying of the output of decision system, through infrastructure using dynamic signals, semaphore controlling, or using direct communication with drivers or vehicles through on-board visualisation/notification system. A block diagram of a generic IMS is presented in figure \ref{arch}
 
 %Para afrontar esta problem\'{a}tica aparecen diferentes tipos de aplicaciones y sistemas para realizar tareas como monitoreo y administraci\'{o}n de intersecciones, detecci\'{o}n de veh\'{i}culos, advertencia de incidentes, prevenci\'{o}n de colisiones, entre otros. El esquema de comuniciaci\'{o}n de estos sistemas se basa en la interacci\'{o}n entre los veh\'{i}culos y la infraestructura, com\'{u}nmente dividida en 3 tipos: Comunicaci\'{o}n veh\'{i}culo a veh\'{i}culo (V2V), veh\'{i}culo a infraestructura (V2I) y la combinaci\'{o}n de las dos anteriores (V2X).
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.75]{fig/2/fig1}
-\caption{Generic block diagram of an Intersection Management System (from \cite{Chan2005}).}
+\includegraphics[scale=0.55]{fig/2/genericIMS.png}
+\caption{Generic block diagram of an Intersection Management System.}
 \label{arch}
 \end{figure}
 
-Figure \ref{arch}, presents a generic block diagram of an Intersection Management System composed by three main components: (a) Data source, that could be infrastructure sensors, like inductive loops, range sensors or cameras, and also could be vehicle sensors. (b) Decision system, which is the core of the whole system, is in charge of analyse and process information provided by infrastructure, vehicles and environment in order to predict future incidents, control traffic and generate safe decisions and warnings alerts. Finally, (c) is the presentation and displaying of the output of decision system. It could be at the infrastructure using dynamic signals, semaphore controlling, or vehicle-directed through on-board visualization/notification system.
+
 
 %En la figura \ref{arch}, se presenta un diagrama de bloques general de un sistema de administraci\'{o}n de una intersecci\'{o}n en donde se destacan 3 componentes: (a) Las fuentes de los datos, que pueden ser sensores en la infraestructura, como sensores inductivos, sensores de rango, c\'{a}maras, o sensores en el veh\'{i}culo. (b) Sistema  de decisi\'{o}n o administraci\'{o}n, que es el encargado de analizar la informaci\'{o}n de los veh\'{i}culos y el entorno, predecir incidentes futuros y enviar se\~{n}ales de alerta. y (c) La presentaci\'{o}n de informaci\'{o}n de control, que puede ser en la infraestructura con se\~{n}ales din\'{a}micas, control de los sem\'{a}foros, como tambi\'{e}n puede ser en el veh\'{i}culo mediante un dispositivo de visualizaci\'{o}n.
 
-\subsection{Applications in IMS}
+\subsection{Components in IMS application}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.2125]{fig/2/ims_graph2.png}
-\caption{Components of an interesection management systems application.}
+\caption{Components of an interesection management system application.}
 \label{fusionAlgs}
 \end{figure}
 
