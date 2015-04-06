@@ -2,8 +2,7 @@
 
 \chapter [Sensor Fusion and IMS]{Multisensor Data Fusion and Intersection Management Systems}
 
-An intersection is a highly-dynamic scenario that can be monitored using a wide range of sensors. For this reason, an efficient and accurate fusion of the information is needed. This chapter is divided into two sections. In the first section a brief overview of multisensor data fusion is presented, remarking in different architectures proposed in the literature and different approaches used for laser and video data fusion are described.
-The second section contains a short review on intelligent transportation systems and intersection management systems, including current research on this topic. Finally, some projects that include fusion of laser and video data for intersection managing applications are presented.
+An intersection is a highly-dynamic scenario that can be monitored using a wide range of sensors. For this reason, an efficient and accurate fusion of the information is needed. This chapter is divided into two sections. In the first section a brief overview of multisensor data fusion is presented, remarking in different architectures proposed in the literature and different algorithms and frameworks used for this task. The second section contains a short review on intelligent transportation systems and intersection management systems, including a description of elements involved in the development of an IMS application. Finally, some projects that include multisensor data for intersection managing applications are presented.
 
 \section{Multisensor Data Fusion}
 
@@ -262,11 +261,19 @@ Other systems analyse the behaviour and interactions between detected objects to
 
 \subsubsection{Data Source}
 
-The origin of data is considered an independent component because the variety of possible sources. From infrastructure side, data can be captured using a wide range of sensors like inductive loops, lasers, lidars and cameras. Also, monitoring connections to networks, like bluetooth, to estimate vehicle traffic through a place, have been used recently.
+The origin of data is considered an independent component because of the variety of possible sources and posterior processing stages. From infrastructure side, data can be captured using a wide range of sensors like inductive loops, lasers, lidars and cameras. Also, monitoring connections to networks, like bluetooth, to estimate vehicle traffic through a place, have been used recently \cite{Friesen2013, Friesen2014}. On the other side, data from vehicles is also useful for the system to enhance its representation of the scene and take decisions. This could be low-level data like vehicle state variables, for example, speed, orientation, acceleration, etc., or high-level data like travel information.
+
 
 \subsubsection{Target}
+
+In an intersection many objects of different kinds interact between them. Pedestrian and vehicles are found at intersections, and latter includes bicycles, motorcycles, cars, vans, buses, trucks and some other types of vehicles. For this reason some applications are designed for a specific element or group of elements. Pedestrian tracking, motorcycles recognition or car counting are examples of targeted applications.
+
 \subsubsection{Communication}
+
+
 \subsubsection{Implementation}
+
+
 
 many approaches have been proposed for information capture stage, both taking data from vehicle or from the infrastructure. For example, monitoring mobile wireless network like Bluetooth \cite{Friesen2013}, detecting vehicle presence using inductive loops or RFID tags, identifying vehicles and pedestrian using cameras \cite{Buch2011, Strigel2013}, single or multiple laser-scanners \cite{Meissner2010, Meissner2012, Zhao2006, Zhao2008, Zhao2012}, and multi-sensor integrated systems \cite{Meissner2013, Meissner2013a, Meissner2014, GoldHammer2012, Zhao2009}.
 
