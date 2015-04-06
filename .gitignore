@@ -5,3 +5,7 @@
 *.blg
 *.gz
 *.toc
+/main.lof
+/main.lot
+*.out
+*.tks
