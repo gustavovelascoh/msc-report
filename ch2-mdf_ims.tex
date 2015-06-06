@@ -228,7 +228,7 @@ One of the most desirable scenarios to improve efficiency and safety is an inter
 
 %\section[Types of IMS]{Types of Intersection Management Systems}
 
-Different types of applications and systems are conceived to address these issues. Some tasks performed by those are intersection monitoring, vehicles detection, incident warning, collision avoidance, among others. A typical Intersection Management System is composed by three main components: Data source, that could be infrastructure sensors, like inductive loops, range sensors or cameras, along vehicle sensors and traveling data; decision system, which is the core of the whole system, is in charge of analyse and process information provided by infrastructure, vehicles and authorities in order identify objects, recognise patterns, predict future incidents, control traffic and generate safe decisions and warnings alerts; and finally, is the presentation and displaying of the output of decision system, through infrastructure using dynamic signals, semaphore controlling, or using direct communication with drivers or vehicles through on-board visualisation/notification system. A block diagram of a generic IMS is presented in figure \ref{arch}
+Different types of applications and systems are conceived to address these issues. Some tasks performed by those systems are intersection monitoring, vehicles detection, incident warning, collision avoidance, among others. A typical Intersection Management System is composed by three main components: Data source, that could be infrastructure sensors, like inductive loops, range sensors or cameras, and vehicle sensors and traveling data; decision system, which is the core of the whole system, is in charge of analyse and process information provided by infrastructure, vehicles and authorities in order to identify objects, recognise patterns, predict future incidents, control traffic and generate safe decisions and warnings alerts; and finally, is the presentation and displaying of the output of decision system, through infrastructure using dynamic signals, traffic light controlling, or using direct communication with drivers or vehicles through on-board visualisation/notification system. A block diagram of a generic IMS is presented in figure \ref{arch}
 
 %Para afrontar esta problem\'{a}tica aparecen diferentes tipos de aplicaciones y sistemas para realizar tareas como monitoreo y administraci\'{o}n de intersecciones, detecci\'{o}n de veh\'{i}culos, advertencia de incidentes, prevenci\'{o}n de colisiones, entre otros. El esquema de comuniciaci\'{o}n de estos sistemas se basa en la interacci\'{o}n entre los veh\'{i}culos y la infraestructura, com\'{u}nmente dividida en 3 tipos: Comunicaci\'{o}n veh\'{i}culo a veh\'{i}culo (V2V), veh\'{i}culo a infraestructura (V2I) y la combinaci\'{o}n de las dos anteriores (V2X).
 
@@ -245,11 +245,11 @@ Different types of applications and systems are conceived to address these issue
 
 \subsection{Components in IMS application}
 
-Intersection monitoring is a required task to be done within intelligent transportation systems for high-level applications like traffic analysis, counting and classification of vehicles or pedestrians, event prediction, incident detection and security and surveillance systems. Those applications have to take into account some of the elements depicted in figure \ref{arch} and developments in IMS have a wide range of approaches and objectives. In order to study IMS applications, five components have been defined, which are present on these applications, and on most cases, more than one component could be involved in the same development. In figure  \ref{imsComps} a graph is presented, showing aforementioned components and elements within them and then, a description of each component is given.
+Intersection monitoring is a required task to be done within intelligent transportation systems for high-level applications like traffic analysis, counting and classification of vehicles or pedestrians, event prediction, incident detection and security and surveillance systems. Those applications have to take into account some of the elements depicted in figure \ref{arch} and developments in IMS have a wide range of approaches and objectives. In order to study IMS applications, five components have been defined, which are present on these applications, and on most cases, more than one component could be involved in the same development. In figure  \ref{imsComps} a graph is presented, showing aforementioned components and elements within them, and next, a description of each component is given.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.2125]{fig/2/ims_graph2.png}
+\includegraphics[scale=0.25]{fig/2/ims_graph5.png}
 \caption{Components of an Intersection Management System application.}
 \label{imsComps}
 \end{figure}
@@ -257,11 +257,11 @@ Intersection monitoring is a required task to be done within intelligent transpo
 \subsubsection{Application}
 
 Application component could be seen as the final objective of the system. Generally, this includes high-level tasks like monitoring, analysis or control. Monitoring or surveillance systems execute actions like recognition, detection and/or tracking of objects in the scene. 
-Other systems analyse the behaviour and interactions between detected objects to recognise path patterns, determine the context of the environment and predict some events of interest. In \cite{Kamijo1999, Kamijo2000} is presented a system for accident detection and classification at intersections.In a higher level there are the control or decisions made based on detection of certain traffic conditions to handle traffic lights, control intersection access, generate warnings to drivers or issue traffic tickets when a rule violation exists.
+Other systems analyse the behaviour and interactions between detected objects to recognise path patterns, determine the context of the environment and predict some events of interest. At a higher level there are systems which make decisions based on detection of certain traffic conditions to handle traffic lights, control intersection access, generate warnings to drivers or issue traffic tickets when a rule violation exists.
 
 \subsubsection{Data Source}
 
-The origin of data is considered an independent component because of the variety of possible sources and posterior processing stages. From infrastructure side, data can be captured using a wide range of sensors like inductive loops, lasers, lidars and cameras. Also, monitoring connections to networks, like bluetooth, to estimate vehicle traffic through a place, have been used recently \cite{Friesen2013, Friesen2014}. On the other side, data from vehicles is also useful for the system to enhance its representation of the scene and take decisions. This could be low-level data like vehicle state variables, for example, speed, orientation, acceleration, etc., or high-level data like travel information.
+The origin of data is considered an independent component because of the variety of possible sources and posterior processing stages. From infrastructure side, data can be captured using a wide range of sensors like inductive loops, lasers, lidars and cameras. Also, monitoring connections to wireless networks. On the other side, data from vehicles is also useful for the system to enhance its representation of the scene and take decisions. This could be low-level data like vehicle state variables, for example, speed, orientation, acceleration, etc., or high-level data like travel information.
 
 
 \subsubsection{Target}
@@ -270,11 +270,11 @@ In an intersection many objects of different kinds interact between them. Pedest
 
 \subsubsection{Communication}
 
-One of the keypoints of ITS is how information technologies and communication advances are included in transportation. The main goal of this is to allow that information to be shared between vehicles and infrastructure entities. For this reason, 3 communication approaches appear: Vehicle-to-vehicle or Inter-vehicle communication (V2V), vehicle-to-infrastructure communication (V2I) and vehicle to both vehicle and infrastructure (V2X). Several protocols and standars have been proposed for these communication approaches, for example DSRC, WAVE and IEEE 802.11p, but research and development on this component is still active.
+One of the keypoints of ITS is how information technologies and communication advances are included in transportation. The main goal of this is to allow information sharing between vehicles and infrastructure entities. For this reason, 3 communication approaches appear: Vehicle-to-vehicle or Inter-vehicle communication (V2V), vehicle-to-infrastructure communication (V2I) and vehicle to both vehicle and infrastructure (V2X). Several protocols and standars have been proposed for these communication approaches, for example DSRC, WAVE and IEEE 802.11p, but research and development on this component is still active.
 
 \subsubsection{Implementation}
 
-Not all IMS applications are implementable on a real scenario, maybe because is not the scope of the application or because it is in a early stage and it could be validated in other ways. This types of developments are sometimes implemented and evaluated using simulators, making functional prototypes or deploying scale-models. Some other projects use datasets to evaluate new algorithms and data processing techniques, and then compare obtained results with previous works. Augmented reality is also used as a tool for evaluating and validate developmens, taking advantage of the interaction of a real system with a simulated/artificial scenario.
+Not all IMS applications are implementable on a real scenario, maybe because is not the scope of the application or because it is in a early stage and it could be validated in other ways. This types of developments are sometimes implemented and evaluated using simulators, making functional prototypes or deploying scale-models. Some other projects use datasets to evaluate new algorithms and data processing techniques, and then compare obtained results with previous works. Augmented reality is also used as a tool for evaluating and validate developments, taking advantage of the interaction of a real system with a simulated/artificial scenario.
 
 %many approaches have been proposed for information capture stage, both taking data from vehicle or from the infrastructure. For example, monitoring mobile wireless network like Bluetooth \cite{Friesen2013}, detecting vehicle presence using inductive loops or RFID tags, identifying vehicles and pedestrian using cameras \cite{Buch2011, Strigel2013}, single or multiple laser-scanners \cite{Meissner2010, Meissner2012, Zhao2006, Zhao2008, Zhao2012}, and multi-sensor integrated systems \cite{Meissner2013, Meissner2013a, Meissner2014, GoldHammer2012, Zhao2009}.
 
@@ -289,6 +289,10 @@ Not all IMS applications are implementable on a real scenario, maybe because is 
 %\subsection{Taxonomy}
 
 \subsection{Developments in Intersection Management Systems}
+
+In the next table is presented a compilation of several developments within IMS field. For each work a brief overview and a remark of how each component is related to it are given.
+
+\section{Sensor Fusion in Intersection Management}
 
 \section{Conclusions}
 
