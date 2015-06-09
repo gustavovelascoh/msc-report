@@ -290,7 +290,269 @@ Not all IMS applications are implementable on a real scenario, maybe because is 
 
 \subsection{Developments in Intersection Management Systems}
 
-In the next table is presented a compilation of several developments within IMS field. For each work a brief overview and a remark of how each component is related to it are given.
+In the table \ref{reviewtable} is presented a compilation of several developments within IMS field. For each work a brief comment is given, and a remark of how certain components (Data source, communication and application) are related to it. Target and implementation components could be infered from the comment.
+
+\begin{center}
+\footnotesize
+\begin{longtable}{|c|p{0.3\linewidth}|p{0.15\linewidth}|p{0.1\linewidth}|c|}
+%\begin{tabular}
+\hline
+\multicolumn{5}{|c|}{ \textbf{Developments on Intersection Management Systems} } \\
+
+\hline
+\textbf{Reference} & 
+\pbox{0.3\linewidth}{\textbf{Comment}} & 
+\pbox{0.15\linewidth}{\textbf{Application}} & 
+\pbox{0.1\linewidth}{\textbf{Data Source}} & 
+\textbf{Communication} \\
+
+\hline
+\endfirsthead
+\hline
+\textbf{Reference} & \textbf{Comment} & \textbf{Application} & \textbf{Data Source} & \textbf{Communication} \\
+\hline
+\endhead
+
+\cite{Kamijo1999, Kamijo2000} & 
+{They show an intersection monitoring system based on a fixed camera. This system is divided in three stages: Background modeling, object tracking and accident detection. They propose an innovative feature for accident detection using HMM.} & 
+{Accident  detection} & 
+Camera & 
+N/A \\
+\hline
+
+\cite{Veeraraghavan2002} &
+{Passive video-based system for monitoring an intersection. They implemented Stauffer's Method for background modeling, PCA for oriented bounding box computation, and Graph-based tracking and motion estimation. Also a simple methods for classification and calibration are described.} &
+{Accident  detection} & 
+Camera & 
+N/A \\
+\hline
+
+\cite{Gehrig2003} & & & & \\
+\hline
+
+\cite{Veeraraghavan2003} &
+They present 4 stages for IMS: background modeling, motion tracking, feature extraction, calibration. They propose a 2-level tracking: Blob tracking as low-level and position using Kalman filter as high-level. &
+Accident detection / prediction &
+Camera & 
+N/A \\
+\hline
+
+\cite{Messelodi2004} & & & & \\
+\hline
+\cite{Dogan2004} & & & & \\
+\hline
+
+\cite{Chan2004} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Atev2005} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Chan2005} &
+ &
+ &
+ &
+ \\
+\hline
+\cite{Avila2005} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Veeraraghavan2005} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Zhao2006} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Eguchi2007} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Kuramoto2007} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Dresner2008} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Jarupan2008} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Zhao2008} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Rawashdeh2008} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Mundewadikar2008} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Zhao2009} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Abbas2009} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Babaei2010} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Meissner2010} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Quinlan2010} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Ball2010} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Babaei2011} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Basma2011} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Azimi2012} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{CondeBento2012} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Zhao2012} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Jin2012} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Meissner2012} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Goldhammer2012} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{Friesen2013} &
+ &
+ &
+ &
+ \\
+\hline
+
+\cite{} &
+ &
+ &
+ &
+ \\
+\hline
+
+
+
+
+\hline
+%\end{tabular}
+\caption{Developments related to Intersection Management Systems.}
+\label{reviewtable}
+\end{longtable}
+\end{center}
 
 \section{Sensor Fusion in Intersection Management}
 
