@@ -1,0 +1,332 @@
+% IMS review table
+\begin{center}
+\footnotesize
+\begin{longtable}{|c|p{0.3\linewidth}|p{0.15\linewidth}|p{0.1\linewidth}|c|}
+%\begin{tabular}
+\hline
+\multicolumn{5}{|c|}{ \textbf{Developments on Intersection Management Systems} } \\
+
+\hline
+\textbf{Reference} & 
+\pbox{0.3\linewidth}{\textbf{Comment}} & 
+\pbox{0.15\linewidth}{\textbf{Application}} & 
+\pbox{0.1\linewidth}{\textbf{Data Source}} & 
+\textbf{Communication} \\
+
+\hline
+\endfirsthead
+\hline
+\textbf{Reference} & \textbf{Comment} & \textbf{Application} & \textbf{Data Source} & \textbf{Communication} \\
+\hline
+\endhead
+
+\cite{Kamijo1999, Kamijo2000} & 
+{They show an intersection monitoring system based on a fixed camera. This system is divided in three stages: Background modeling, object tracking and accident detection. They propose an innovative feature for accident detection using HMM.} & 
+{Accident  detection} & 
+Camera & 
+N/A \\
+\hline
+
+\cite{Veeraraghavan2002} &
+{Passive video-based system for monitoring an intersection. They implemented Stauffer's Method for background modeling, PCA for oriented bounding box computation, and Graph-based tracking and motion estimation. Also a simple methods for classification and calibration are described.} &
+{Accident  detection} & 
+Camera & 
+N/A \\
+\hline
+
+%\cite{Gehrig2003} & & & & \\ \hline
+
+\cite{Veeraraghavan2003} &
+They present 4 stages for IMS: background modeling, motion tracking, feature extraction, calibration. They propose a 2-level tracking: Blob tracking as low-level and position using Kalman filter as high-level. &
+Accident detection / prediction &
+Camera & 
+N/A \\
+\hline
+
+\cite{Messelodi2004} &
+A Full implementation of an IMS in a town in northern Italy. The system claims to be independent of intersection geometry and it is based on a monocular camera. Processing stages of the system and classification approaches are described. &
+Intersection Monitoring &
+Camera &
+N/A \\
+\hline
+
+\cite{Dogan2004} &
+Development of a simulator for an Intersection Collision Warning System. Physical and MAC layers were modeled &
+Intersection collision warning simulator &
+N/A &
+V2V \\
+\hline
+
+\cite{Chan2004} &
+ Traffic monitoring for two context: Left-Turn-Across-Path-Opposite-Direction and Dilemma zone and red light violation &
+Intersection Monitoring &
+Radar &
+N/A \\
+\hline
+
+\cite{Atev2005} &
+A collision prediction system based on computational geometry is presented. The two main stages are low-level vision system for foreground optimization, with shaking compensation and noise removal, and a collision prediction system based on bounding boxes instead of bounding rectangles. &
+Collision prediction &
+Camera &
+N/A \\
+\hline
+
+\cite{Chan2005} &
+Analysis of Left-Turn-Across-Path-Opossite-Direction conflict situation. &
+Intersection Monitoring &
+Radar; Steering, speed sensors and GPS on-board &
+V2X \\
+\hline
+
+\cite{Avila2005} &
+Based on \cite{Dogan2004}, this works includes and improvement, including network layer and driver behaviour model. &
+Intersection Simulator Architecture &
+N/A &
+V2X \\
+\hline
+
+\cite{Veeraraghavan2005} &
+Tracking system based on Kalman filter for tracking and event detection at intersections, capable of detect 4 events: Acceleration, uniform velocity, stop and turns. &
+Tracking and event detection &
+Camera &
+N/A \\
+\hline
+
+\cite{Zhao2006} &
+Object tracking and classification at intersection using a single laser scanner. The system identifies 3 classes: Pedestrians, 2-wheeled vehicle and cars. It is based on points clustering, KL transform and markov chains &
+Object tracking and classification &
+Laser &
+N/A \\
+\hline
+
+\cite{Eguchi2007} &
+A system for discriminate an approaching vehicle to an intersection is described. It use a monocular camera and define a number of features for classification. Motion vectors are used too and determine the level of approaching. &
+Vehicle detection &
+Camera &
+N/A \\
+\hline
+
+\cite{Kuramoto2007} &
+A communication scheme based on nearest to intersection is described. Two zones are defined: nearest zone and quasi-nearest zone. Based on which zone vehicles are, communicaton is performed. Validation of proposal is done using a custom microscopic simulator. &
+Intersection Communication Scheme &
+N/A &
+V2I \\
+\hline
+
+\cite{Dresner2008} &
+A multiagent-based intersection control protocol called autonomous intersection management (AIM) is proposed. Based on a custom simulation, vehicles are modeled and they comunicate with an intersection manager which allows or deny access to intersection. It is possible to set different traffic policies, even for emulate current control approaches lke stop lights and traffic lights. &
+Intersection Management &
+On-board state sensors &
+V2I \\
+\hline
+
+\cite{Jarupan2008} &
+Based on \cite{Dogan2004} and \cite{Avila2005}, this simulator architecture emphasize on wireless communications. Now the system allows to compare different communication protocols and traffic configurations. &
+Intersection Simulator Architecture &
+N/A &
+V2V \\
+\hline
+
+\cite{Zhao2008} &
+Based on \cite{Zhao2006}, the system now includes more laser sensor for get a better representation of the scene, solving some occlusion issues. Clustering is used for grouping readings from different sensors belonging to the same object and a tracking approach based on angle of beam, range and time is presented. &
+Intersection monitoring &
+Lasers &
+N/A \\
+\hline
+
+\cite{Rawashdeh2008} &
+Proposal of a communication architecture for vehicles approaching to an intersection. Two zones are defined: Control Channel Zone (CCHZ) and Service Channel Zone (SCHZ). Also, 3 different methods are described for the system to be implmented &
+Collision avoidance &
+N/A &
+V2I \\
+\hline
+
+\cite{Mundewadikar2008} &
+Proposal of a physical-layer protocol for V2I communication at intersections. The system is evaluated in simulation using MATLAB &
+Collision detection and warning &
+N/A &
+V2I \\
+\hline
+
+\cite{Zhao2009} &
+Based on \cite{Zhao2008}, now the system includes a camera for video capture. In this video, data obtained from the lasers-based system are projected, drawing bounding boxes for vehicles and lines for trajectories. &
+Intersection monitoring &
+Camera, Lasers &
+N/A \\
+\hline
+
+\cite{Abbas2009} &
+Monitoring dilemma zone and efectiveness of control policies using cameras and loop detectors on an intersection &
+Intersection monitoring &
+Cameras, loop detectors &
+N/A \\
+\hline
+
+\cite{Babaei2010} &
+Author presents a system for foreground extraction, vehicle detection and tracking. A novel algorithm is proposed based on image division in traffic zones to perform background removal and vehicle detection. This proposal is compared with traditional MoG approach. &
+Intersection monitoring &
+Camera &
+N/A \\
+\hline
+
+\cite{Meissner2010} &
+A semi-automatic calibration method for a network of lidar sensors is presented using a custom simulation environment. Also, a calibration object were designed based on simulation results. &
+Intersection Monitoring &
+Lidars &
+N/A \\
+\hline
+
+\cite{Quinlan2010} &
+An augmented reality implementation of the system proposed in cite{Dresner2008} is presented. In this work, an autonomous vehicle is deployed in a mixed-reality platform and request to an virtual intersection manager for authorisation to cross and is the manager which decides if it is safe to cross or not, depending on the defined traffic policies and the state of virtual vehicles. &
+Intersection management &
+On-board state sensors &
+V2I \\
+\hline
+
+\cite{Ball2010} &
+The use of intelligent objects in vehicles is proposed. With sharing vehicle state information and jouney plans, the system aims to better control traffic in intersection using a novel back-off protocol instead of time traffic control system. &
+Traffic control &
+On-board state sensors, Journey plans &
+V2V \\
+\hline
+
+\cite{Babaei2011} &
+A system for traffic flow measurement based on anormalities detection is presented. Multiple cameras are used SIFT and unsupervised SVM-based clustering are performed for trajectories analysis. &
+Intersection monitoring &
+Cameras &
+N/A \\
+\hline
+
+\cite{Basma2011} &
+In presented system, wireless magnetic nodes are used to detect presence and to send data to a base station, which determines possible collisions and warns driver through a visualisation system in infrastructure. &
+Collision Avoidance	 &
+Presence sensors &
+N/A \\
+\hline
+
+\cite{Azimi2012} &
+An intersection control protocol based on V2V communication is proposed. This protocol is in charge of handling other vehicles messages and determines if is it safe or not to cross. They present two policies for managing intersection access: Concurrent Crossing- Intersection Protocol (CC-IP) and Maximum Progression-Intersection Protocol (MP-IP). &
+Intersection management &
+N/A &
+V2V \\
+\hline
+
+\cite{CondeBento2012} &
+A microscopic simulator was developed, with a spatial-temporal-based approach for managing the intersection. It is possible to implement different traffic policies for comparison purposes and the system works on crossroads and roundabouts. &
+Intersection management &
+On-board state sensors &
+V2X \\
+\hline
+
+\cite{Zhao2012} &
+A novel approach for detecting moving objects and track them is presented. The focus of this work relies on process merged data from laser sensors (\cite{Zhao2009}) to get better results at tracking. &
+Object detection and tracking &
+Lasers &
+N/A \\
+\hline
+
+\cite{Jin2012} &
+A Multiagent-based system is proposed. They define a Vehicle Agent and and Intersection Agent and propose a protocol for controlling intersection access based on timeslots, Also, the present a vehicle motion planning algorithm. Validation and testing was done using SUMO platform &
+Intersection Management &
+On-board state sensors &
+V2I \\
+\hline
+
+\cite{Meissner2012} &
+A set of laser scanners is used for detect and track pedestrians. GMM and DBSCAN are proposed for detection stage. For tracking purpose, a random finite set particle filter is used. &
+Pedestrians detection and tracking &
+Lasers &
+N/A \\
+\hline
+
+\cite{Goldhammer2012} &
+In this work is presented the setting and configuration of a multisensor network, based on 14 lasers, 10 cameras, GPS and V2I unit. Calibration and spatial-temporal alignment is performed. &
+System Architecture &
+Cameras, Lasers &
+V2I \\
+\hline
+
+\cite{Friesen2013} &
+A set of wireless probes are deployed to estimate traffic flow based on bluetooth connections. Then, using Zigbee, data is send to a master node which handle data for forwarding to a server / database for further processing. &
+Traffic monitoring &
+Wireless sensor network &
+N/A \\
+\hline
+
+\cite{Guerrero-Ibanez2013} &
+Two modes of Intersection Access Control: V2I mode and V2V mode. Implementation was done using minirobots in a scale model of an intersection. &
+Intersection access control &
+Loop detectors and RFID nodes &
+V2X \\
+\hline
+
+%\cite{Meissner2013,Meissner2013a} &
+% &
+% &
+% &
+% \\
+%\hline
+
+\cite{Meissner2013b} &
+A new method for object detection based on lidars data is proposed. After perform background removal, they use DBGridSCAN for 3D clustering and 2D pathway tracking. Then a combination of 2D-3D is done. The proposal is validated using OSPA metric. &
+Object Detection &
+Lasers &
+N/A \\
+\hline
+
+\cite{Au2015} &
+On top of AIM (\cite{Dresner2008}) Semi-AIM protocol is proposed. Assuming that human-driven vehicles to autonomous vehicles transition will be long, this system is intended for semi-autonomous vehicles. Also the author describe the human relation to a semi-autonomous vehicle and analyse how the features of autonomy employed by the car affects the traffic delay. &
+Intersection Management &
+On-board state sensors &
+V2I \\
+\hline
+
+%\cite{} &
+% &
+% &
+% &
+% \\
+%\hline
+
+%\cite{} &
+% &
+% &
+% &
+% \\
+%\hline
+
+%\cite{} &
+% &
+% &
+% &
+% \\
+%\hline
+
+%\cite{} &
+% &
+% &
+% &
+% \\
+%\hline
+
+%\cite{} &
+% &
+% &
+% &
+% \\
+%\hline
+
+%\cite{} &
+% &
+% &
+% &
+% \\
+%\hline
+
+
+\hline
+%\end{tabular}
+\caption{Developments related to Intersection Management Systems.}
+\label{reviewtable}
+\end{longtable}
+\end{center}
