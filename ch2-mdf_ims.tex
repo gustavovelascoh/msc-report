@@ -298,6 +298,61 @@ In the table \ref{reviewtable} is presented a compilation of several development
 
 Cameras are a wide used sensor for surveillance and monitoring applications because they provide a lot of information for scene understanding, but the transmitting and processing of such information requires high computational resources. For this reason low resolution cameras and low frame rates configurations are commonly deployed. On the other hand, range sensor, such as lasers and lidars, have been recently included in Intersection management systems, as unique sensors or with cameras too. One of the benefits of range sensors is that because of information volume is less than provided by cameras, its processing requirements are lower. Using both cameras and range sensors for intersection management systems makes it possible to take advantages of each type of sensor, and obtain a better representation of the environment.
 
+Although many works based on cameras are found, there are two main developments that make use of range sensors along cameras to implement an IMS. The first one, developed by POSS research group at Peking University\footnote{http://www.poss.pku.edu.cn/index.html}, is the POSSi project which main objective is monitoring a dynamic environment through fusion of laser and video. In this project, a set of laser scanners are deployed on corners of an intersection and a camera is installed over a pedestrian bridge. They perform a fusion over laser data and after detection and recognition of vehicles and pedstrians, this info is backprojected on video stream.
+
+The second relevant project, Ko-PER project\footnote{http://ko-fas.de/english/ko-per---cooperative-perception.html}, was developed by the Institute of Measurement, Control and Microtechnology at Ulm University under Ko-FAS research initiative. Ko-PER project aims to capture a complete picure of the local traffic environment. In order to do so, a full deployment of infrastructure was made, using 14 laserscanners, 10 cameras, a GPS and a V2I communication unit. Also, they perform a low-level fusion over same type sensor first, and then they merge outputs of each subsystem for improve detection and analysis results.
+
+In the proposed work, there is not a deployment of sensors in an intersection scenario, but datasets from the previous mentioned projects will be used instead. Also, one of the objectives is to explore and propose a modular fusion architecture/framework for IMS based on cameras and laser sensors. In table X a summary of aforementioned developments is presented, including proposed work.
+
+\begin{table}
+\begin{tabular}{|c|c|p{0.125\linewidth}|p{0.15\linewidth}|c|c|c|c|}
+\hline
+
+\textbf{References} & \textbf{Project} & \textbf{Sensors} & \textbf{Target} & \textbf{Fusion} & \textbf{Framework} \\
+\hline
+
+\cite{Zhao2006} & POSSi & Laser & Vehicles, pedestrians & No & No \\
+\hline
+
+\cite{Song2008} & POSSi & Lasers & Pedestrians & Yes & No \\
+\hline
+
+\cite{Zhao2008} & POSSi & Lasers & Vehicles, pedestrians & Yes & No \\
+\hline
+
+\cite{Zhao2009} & POSSi & Lasers, Camera & Vehicles, pedestrians & Yes & No \\
+\hline
+
+\cite{Zhao2012} & POSSi & Lasers & Vehicles, pedestrians & Yes & No \\
+\hline
+
+\cite{Goldhammer2012} & Ko-PER & Lasers, Cameras & Vehicles, pedestrians & Yes & No \\
+\hline
+
+\cite{Meissner2012} & Ko-PER & Lasers & Pedestrians & Yes & No \\
+\hline
+
+\cite{Meissner2013} & Ko-PER & Lasers & Vehicles, pedestrians & Yes & No \\
+\hline
+
+\cite{Meissner2013a, Meissner2013b} & Ko-PER & Lasers, Cameras & Vehicles, pedestrians & Yes & No \\
+\hline
+
+\cite{Strigel2013} & Ko-PER & Cameras & Vehicles & Yes & No \\
+\hline
+
+\cite{Meissner2014} & Ko-PER & Lasers, Cameras & Vehicles, pedestrians & Yes & No \\
+\hline
+
+%\cite{} &  &  &  &  &  \\
+%\hline
+
+Proposed work & - & Lasers, Cameras & Vehicles & Multilevel & Yes \\
+\hline
+
+\end{tabular}
+\end{table}
+
 \section{Conclusions}
 
 Multisensor data fusion can be defined as the process of combine, merge or integrate data from homogeneous or heterogeneous set of sensors in order to get a better representation of a process, the environment or a situation, through the inference of underlying information and the improve of quality of data. Depending of the nature of the sensors and the source of information, fusion can be done in several manners, i.e., sensor-level fusion, feature-level fusion or decision-level fusion.
