@@ -9,3 +9,6 @@
 /main.lot
 *.out
 *.tks
+*.xml
+*.bcf
+*~
