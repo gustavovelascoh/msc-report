@@ -14,7 +14,7 @@
 %\chapter {Architecture Description and System Specification}
 \chapter {System Description}
 
-Although several types of sensors are used for intersection monitoring and supervision, the use of cameras, lasers and lidars has increased due to advances in sensors and computing capabilities. These enhancements have allowed to deploy more of these types of sensors per scenario and it is required to define some processing stages from raw data capture through decision and control. Also it is needed to test and validate the developments prior to a real and full functional implementation. The first part of this chapter describe main stages in a intersection management system based on image and range sensors, and methods used in these stages. Then an architecture proposal for the implementation of such a system is presented. Finally, two validation tools for IMS applications are described, simulators and datasets.
+Although several types of sensors are used for intersection monitoring and supervision, the use of cameras, lasers and lidars has increased due to advances in sensors and computing capabilities. These enhancements have allowed to deploy more of these types of sensors per scenario and it is required to define some processing stages from raw data capture through decision and control. Also it is needed to test and validate the developments prior to a real and full functional implementation. The first part of this chapter describe main stages in a intersection management system based on image and range sensors, and methods used in these stages. Then an architecture proposal for the implementation of such a system is presented. Finally, two validation tools for IMS applications are described, simulation models and datasets.
 
 \section{Multisensor IMS}
 
@@ -44,12 +44,23 @@ Depending on system design, if it has multiple sensors of the same type or diffe
 
 \section{Validation approaches}
 
-Before deploying an IMS, it is needed to test some of its components and validate their results. Two commonly used tools for this purpose are traffic simulators and datasets, depending on the component to be tested. Below, a description of each one is presented.
+Before deploying an IMS, it is needed to test some of its components and validate their results. Two commonly used tools for this purpose are traffic simulation models and datasets, depending on the component to be tested. Below, a description of each one is presented.
 
-\subsection{Transportation and Traffic Simulations}
+\subsection{Transportation and Traffic Simulation}
+
+A more detailed analysis of traffic simulation models and simulation platforms could be found in \cite{AdamsBoxill2000, Barcelo2000, Kitamura2005, Lieberman1992}
 \subsubsection{Simulators Classification}
 \subsection{Intersection monitoring Datasets}
-\subsubsection{POSSi Dataset}
-\subsubsection{KoPER Dataset}
+
+As mentioned in section \ref{s23}, POSS-i and Ko-PER projects are leading the development of multisensor Intersection Management Systems. One of contribution of these project is the creation of datasets of such systems. They provide camera and laser information of a monitored intersection in Peking, China and Aschaffenburg, Germany, respectively. Next, a description of these two datasets will be given.
+
+\subsubsection{POSSi Dataset }
+
+POSSi dataset\footnote{Available at http://www.poss.pku.edu.cn/download.html}
+\subsubsection{KoPER Dataset }
+
+Ko-PER dataset\footnote{Available at http://www.uni-ulm.de/in/mrm/forschung/datensaetze.html}
+
+The full description of this dataset is presented in \cite{Strigel2014}.
 
 \section{Architecture proposal}
