@@ -8,6 +8,13 @@ In this chapter is described the development of a laser based system for interse
 
 The first step in processing laser data is the removal of irrelevant frames, maybe due to communication errors or due to corrupted data. For this stage is proposed a filter based on the of entropy of data, calculated for each frame, because it is not expected to have sudden changes in entropy between consecutive frames. 
 
+\begin{figure}[ht!]
+\centering
+\input{fig/4/entropy_frame.tex}
+\caption{Entropy of frames 1 to 300 of laser readings from sensor 7.}
+\label{entropy_frames}
+\end{figure}
+
 In this case histogram-based entropy estimation is used, which is commonly used in image processing. The first step is to compute histogram $P$ of the frame $f$ using 256 bins, then $P$ is normalized using the sum of each bin value. After this, entropy $H$ of frame $f$ is calculated as follows:
 
 \begin{equation}
@@ -16,12 +23,6 @@ In this case histogram-based entropy estimation is used, which is commonly used 
 
 In figure \ref{entropy_frames} is depicted the evolution of entropy calculated on 300 frames of a laser reading. It can be seen that there are frames with abrupt changes in entropy value, for example frames 97 and 283.
 
-\begin{figure}[ht!]
-\centering
-\input{fig/4/entropy_frame.tex}
-\caption{Entropy of frames 1 to 300 of laser readings from sensor 7.}
-\label{entropy_frames}
-\end{figure}
 
 Figure \ref{l7-f283} shows the actual laser data of frame 283 and its neighbours and also entropy values aroud objective frame. It is clear now that frame 283 is inconsistent with frames 282 and 284, for this reason this frame is considered as corrupted and should be discarded for next stages
 
