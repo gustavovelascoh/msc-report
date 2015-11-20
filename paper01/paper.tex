@@ -1,0 +1,64 @@
+% Single laser work
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{graphicx} % for \includegraphics[scale=•]{•}
+
+\begin{document}
+\title{Stage Oriented Design of an Intersection Management System Based on Laser Scanner Data}
+
+\author{Gustavo Velasco-Hernandez, Eduardo Caicedo-Bravo \\
+Universidad del Valle\\
+{\tt\small velasco.gustavo@correounivalle.edu.co, eduardo.caicedo@correounivalle.edu.co}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+}
+
+\maketitle
+
+\begin{abstract}
+Lorem ipsum dolor sit amet, mei vulputate argumentum an, usu vidit labitur ancillae et, quot accusamus cum et. Recteque dissentiet vim ea, est virtute alterum ea, mei dico scribentur in. Et eam paulo soleat graeci. Ius viderer habemus scriptorem ut, no mea vocibus albucius. Sed no perpetua suscipiantur, pro diam nullam erroribus id. Pro labore audire et, tale eligendi mediocrem his cu, te sonet adipisci ius. Exerci regione noluisse mea no, no usu mazim mediocrem assentior, at audire volumus eam. Soluta oporteat recteque ut ius, nam an sumo solet facilisis, rebum aeque eam et. Pri quot graece in. Dictas liberavisse.
+\end{abstract}
+
+\section{Introduction}
+
+\section{Stages Definition}
+In the designing of an IMS, there are four main stages that have to be performed from the data source to final output: preprocessing, feature analysis, pattern recognition and situation assessment. The aim of the first stage is to extract data of interest from the raw sensor information, using filtering and background subtraction techniques to get the foreground of the scene, remove noise and irrelevant data. Spatio-temporal alignment of data is also performed in this stage. In the second stage, the objective is to identify elements within the foreground and extract relevant features of them. The third stage receives the set of features from the previous stage and performs recognition and classification tasks. Also, tracking and prediction of objects' state is performed based on historic information. In the fourth stage, object behaviour and inter-objects interaction are analysed to identify context and detect situation or events of interest. This output could be delivered to an optional fifth stage of decision and control, to a human operator, or to a traffic agent or institution, to take immediate actions on traffic control, issue traffic tickets, warn drivers about possible incidents or improve transportation policies in a long-term basis. In figure \ref{proc_stages}, previously described stages are depicted, and also is shown how the data volume is reduced while data meaning increases in the last stages.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.55]{../fig/3/proc_stages.png}
+\caption{Dataflow through processing stages in an IMS.}
+\label{proc_stages}
+\end{figure}
+
+Different tasks could be performed in each aforementioned stages, as is referred in figure \ref{proc_stages_tasks}. Below there is a description of common concepts and methods associated with each of these tasks, some of them are sensor-independent and others are focused on a specific sensor or type of data. Additionally, these tasks could be used as fusion blocks for homogeneous or heterogeneous data.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.55]{../fig/3/processing_stages_and_tasks.png}
+\caption{Processing stages and tasks performed.}
+\label{proc_stages_tasks}
+\end{figure}
+
+\section{Laser-based System Implementation}
+
+\subsection{Dataset}
+ The dataset used for this work was provided by POSS research group
+\subsection{Preprocessing}
+\subsection{Feature Analysis}
+\subsection{Pattern Recognition}
+\subsection{Situation Assesment}
+
+\section{Results}
+
+\section{Conclusions and Future Work}
+
+{\small
+\bibliographystyle{plain}
+\bibliography{../bibliography}
+}
+
+\end{document}
