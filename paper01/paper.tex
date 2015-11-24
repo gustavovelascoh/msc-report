@@ -51,9 +51,19 @@ Different tasks could be performed in each aforementioned stages, as is referred
 \end{figure}
 \subsection{Preprocessing}
 
- In the preprocessing stage raw data from sensor is received and the purpose is to enhance this data through filtering noise, removing outliers and discarding corrupted data. Also, in order to extract meaningful information, background removal techniques are applied in this stage. For doing this, a background model should be generated. One typical approach to generate a background model is to use a threshold to determine if certain measure corresponds to background or foreground. This threshold is computed based on a peak value found in histogram of the measure within a time window. Another approach consist in describe the data using a probability distribution function, using maximum likelihood estimation, commonly of a gaussian model.
+ In the preprocessing stage raw data from sensor is received and the purpose is to enhance this data through filtering, removing noise and discarding corrupted data. Also, space and time alignment is done in this stage.
+
+\subsubsection{Background Removing}
+ 
+In order to extract meaningful information, background removal techniques are applied in this stage. For doing this, a background model should be generated. One typical approach to generate a background model is to use a threshold to determine if certain measure corresponds to background or foreground. This threshold is computed based on a peak value found in histogram of the measure within a time window. Another approach consist in describe the data using a probability distribution function, using maximum likelihood estimation, commonly of a gaussian model.
  
 Sometimes, the threshold technique is enough for modeling static backgrounds like walls, buildings or ground. But in other cases, it could be found a non-stable background, for example, when there exist moving vegetation or object borders, and a mixture of models may retrieve a better representation of the data instead.
+
+\subsubsection{Space and Time alignment}
+
+In some cases, it could be desired to have a fixed base of time for trigger sensor readings, for synchronisation purposes or for implement fusion between different sensors within a time slot. Is for this reason that time alignment of data is done.
+
+On the other side, in the case of laser scanners, the measures are referenced to its own coordinate systems. Calibration is needed to transform those measures to a global coordinate systems which represents the whole intersection scenario. 
 
 \subsection{Feature Analysis}
 
