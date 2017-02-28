@@ -21,14 +21,28 @@ Universidad del Valle\\
 \maketitle
 
 \begin{abstract}
-The supervision of vehicular intersections is a major need for improving transportation systems because intersections are complex scenarios where different traffic actors interact between them. Recently, laser-based systems have been proposed and implemented to sense and to monitor intersections, giving good results as those based on cameras. In this work a stage-oriented design of an intersection management system based on laser scanner sensor data is proposed. The main objective of the proposed architecture is that it should have scalability, modularity, and high integrability. In order to achieve those objectives, the process flow of an intersection management system (IMS) is divided into four stages: preprocessing, feature analysis, pattern recognition, and situation assessment. Each of these stages is explained and some commonly used techniques are described. Finally, we present an example implementation using a laser scanner dataset, and a comparison between a single-laser approach and a multi-laser approach.
+The supervision of vehicular intersections is a major need for improving transportation systems because these are complex scenarios where different traffic elements interact between them. Recently, laser-based systems have been proposed and implemented to sense and to monitor intersections, giving good results as those based on cameras. In this work a stage-oriented design of an intersection management system based on laserscanner sensor data is proposed. The main objective of the proposed architecture is that it should have scalability, modularity, and high integrability. In order to achieve those objectives, the process flow of an intersection management system (IMS) is divided into four stages: preprocessing, feature analysis, pattern recognition, and situation assessment. Each of these stages is explained and some commonly used techniques are described. Finally, we present an example implementation using a laserscanner dataset, both in a single-laser approach and a multi-laser approach.
 
 
 \end{abstract}
  
 
 \section{Introduction}
-Lorem ipsum dolor sit amet, mei vulputate argumentum an, usu vidit labitur ancillae et, quot accusamus cum et. Recteque dissentiet vim ea, est virtute alterum ea, mei dico scribentur in. Et eam paulo soleat graeci. Ius viderer habemus scriptorem ut, no mea vocibus albucius. Sed no perpetua suscipiantur, pro diam nullam erroribus id. Pro labore audire et, tale eligendi mediocrem his cu, te sonet adipisci ius. Exerci regione noluisse mea no, no usu mazim mediocrem assentior, at audire volumus eam. Soluta oporteat recteque ut ius, nam an sumo solet facilisis, rebum aeque eam et. Pri quot graece in. Dictas liberavisse.
+
+-TODO-
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.85]{fig/carReferenceSystem.png}
+\caption{Vehicle reference coordinate system}
+\label{vehicle_cs}
+\end{figure}
+
+In figure \ref{vehicle_cs} is shown a commonly used reference coordinate system for vehicles. Based on this, several laser-based systems have been proposed taking a plane as the main plane for laser scanner positioning. For example, F{\"u}erstenberg in  \cite{Fuerstenberg2000} proposes the use XZ plane scanning for vehicle classification and scanning on YZ plane for vehicle counting. Related to YZ plane, in \cite{Harlow2001} and \cite{Vivet2013} present a deployment for vehicle monitoring scanning from the top and Gómez in \cite{Gomez2013} presents a side-view scanning for vehicle classification fused with a vision system. In \cite{Goldhammer2012} and \cite{Strigel2014}, Goldhammer and Striegel, respectively, detail an implemetation using a set of multilayer laser scanners deployed in different configurations for scanning from the top of the road, some using YZ plane and some using XZ plane. Recently, the use of XY plane has increased, and two main approaches arise: on-road and on-board systems. On-road systems are installed in infrastructure, aiming to detect passing vehicles, while on-board systems are installed on vehicles to detect the sourrounding environment. Both of them take the XY plane as main plane for scanning. Some examples of on-road sytems could be found in \cite{Zhao2006, Zhao2008, Zhao2009, Zhao2012} and \cite{Perng2014}. Petrovskaya in \cite{Petrovskaya2009} presents an On-board implementation.
+
+
+
+
 
 \section{Stages Definition}
 In the designing of an IMS, there are four main stages that have to be performed from the data source to final output: preprocessing, feature analysis, pattern recognition and situation assessment.
@@ -130,7 +144,7 @@ With the set of points marked as foreground, clustering is performed to identify
 -TODO-
 
 {\small
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{../bibliography}
 }
 
