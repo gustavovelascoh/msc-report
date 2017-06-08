@@ -23,24 +23,25 @@ Universidad del Valle\\
 \begin{abstract}
 The supervision of vehicular intersections is a major need for improving transportation systems because these are complex scenarios where different traffic elements interact between them. Recently, laser-based systems have been proposed and implemented to sense and to monitor intersections, giving good results as those based on cameras. In this work a stage-oriented design of an intersection management system based on laserscanner sensor data is proposed. The main objective of the proposed architecture is that it should have scalability, modularity, and high integrability. In order to achieve those objectives, the process flow of an intersection management system (IMS) is divided into four stages: preprocessing, feature analysis, pattern recognition, and situation assessment. Each of these stages is explained and some commonly used techniques are described. Finally, we present an example implementation using a laserscanner dataset, both in a single-laser approach and a multi-laser approach.
 
-
 \end{abstract}
- 
+
 
 \section{Introduction}
 
--TODO-
+In transportation systems one of the most desirable scenarios to improve efficiency and safety are intersections. This because intersections are places where vehicles arrive from different directions at different velocities, increasing the chances for incidents and crashes. Choi \cite{Choi2010} states that 40\% of reported traffic accidents in the US, were intersection related. Also, in  \cite{CorporacionFondodePrevencionVial2010}, is reported that for Colombia in 2011, most of the accidents in the main cities were at intersections.
+
+Several approaches for monitoring intersections are based on sensors on infrastructure like inductive loops, range scanners and cameras. Inductive loops detects presence of vehicles, which is simple for processing but information that could be extracted from they is limited. Cameras, on the other side, offer a high volume of data, but their processing requirements are high for extracting information. Range scanners are an intermediate option in which data from them is much high than from inductive loops, but not as high as from cameras and processing techniques for range data are not computational expensive as those for treating images or videos.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.85]{fig/carReferenceSystem.png}
+\includegraphics[scale=0.8]{fig/carReferenceSystem.png}
 \caption{Vehicle reference coordinate system}
 \label{vehicle_cs}
 \end{figure}
 
-In figure \ref{vehicle_cs} is shown a commonly used reference coordinate system for vehicles. Based on this, several laser-based systems have been proposed taking a plane as the main plane for laser scanner positioning. For example, F{\"u}erstenberg in  \cite{Fuerstenberg2000} proposes the use XZ plane scanning for vehicle classification and scanning on YZ plane for vehicle counting. Related to YZ plane, in \cite{Harlow2001} and \cite{Vivet2013} present a deployment for vehicle monitoring scanning from the top and Gómez in \cite{Gomez2013} presents a side-view scanning for vehicle classification fused with a vision system. In \cite{Goldhammer2012} and \cite{Strigel2014}, Goldhammer and Striegel, respectively, detail an implemetation using a set of multilayer laser scanners deployed in different configurations for scanning from the top of the road, some using YZ plane and some using XZ plane. Recently, the use of XY plane has increased, and two main approaches arise: on-road and on-board systems. On-road systems are installed in infrastructure, aiming to detect passing vehicles, while on-board systems are installed on vehicles to detect the sourrounding environment. Both of them take the XY plane as main plane for scanning. Some examples of on-road sytems could be found in \cite{Zhao2006, Zhao2008, Zhao2009, Zhao2012} and \cite{Perng2014}. Petrovskaya in \cite{Petrovskaya2009} presents an On-board implementation.
+For range-based traffic monitoring systems there are three commonly used reference coordinate system for vehicles (Figure \ref{vehicle_cs}). Based on this, several laser-based systems have been proposed taking a plane as the main plane for laser scanner positioning. For example, F{\"u}erstenberg in  \cite{Fuerstenberg2000} proposes the use XZ plane scanning for vehicle classification and scanning on YZ plane for vehicle counting. Related to YZ plane, \cite{Harlow2001} and \cite{Vivet2013} present a deployment for vehicle monitoring scanning from the top and Gómez in \cite{Gomez2013} presents a side-view scanning for vehicle classification fused with a vision system. In \cite{Goldhammer2012} and \cite{Strigel2014}, Goldhammer and Striegel, respectively, detail an implemetation using a set of multilayer laser scanners deployed in different configurations for scanning from the top of the road, some using YZ plane and some using XZ plane. Recently, the use of XY plane has increased, and two main approaches arise: on-road and on-board systems. On-road systems are installed in infrastructure, aiming to detect passing vehicles, while on-board systems are installed on vehicles to detect the sourrounding environment. Both of them take the XY plane as main plane for scanning. Some examples of on-road sytems could be found in \cite{Zhao2006, Zhao2008, Zhao2009, Zhao2012} and \cite{Perng2014}. Petrovskaya in \cite{Petrovskaya2009} presents an On-board implementation.
 
-
+All of the previous developments share a common processing stages that could be enumarated: preprocessing, feature analysis, pattern recognition, and situation assessment. In the section 2, these stages are explained and some common processing substages for each one are introduced. In section 3 is presented an example implementation based on a dataset and showing some methods and techniques used in the proposed stages. Section 4 presents the result of a single-laser and a multi-laser deployments. Finally, in section 6 are summarized the conclusions and some future work perspectives are proposed.
 
 
 
