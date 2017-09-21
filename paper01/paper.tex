@@ -79,18 +79,20 @@ Sometimes, the threshold technique is enough for modeling static backgrounds lik
 
 \subsubsection{Space and Time alignment}
 
-In some cases, it could be desired to have a fixed base of time for trigger sensor readings, for synchronisation purposes or for implement fusion between different sensors within a time slot. Is for this reason that time alignment of data is done.
+In some cases, it could be desired to have a fixed base of time for trigger sensor readings, for synchronisation purposes or for implement fusion between different sensors within a time slot. It is for this reason that time alignment of data is done.
 
 On the other side, in the case of laser scanners, the measures are referenced to its own coordinate systems. Calibration is needed to transform those measures to a global coordinate systems which represents the whole intersection scenario. 
 
 \subsection{Feature Analysis}
 
-After obtaining the foreground of the scene, it is needed to extract relevant points that could represent objects of interest. Clustering is used to group points that belong to the same object, specially algorithms where estimated number of cluster is not needed. 
+After obtaining the foreground of the scene, it is needed to extract relevant points that could represent elements of interest in the intersection, like vehicles, pedestrians or obstacles. In this stage clustering is used to group points that belong to the same object, and for the nature of the environment, algorithms where estimated number of cluster is not needed are prefered. 
 
 
 \subsection{Pattern Recognition}
 
--TODO-
+From the previous stage we have a set of blobs as result of clustering, and based on the features of those blobs, different classes of objects could be recognized. Different classification types are implemented depending on the type of application, binary classification or multiclass classification.
+
+When objects are identified, some relations between objects should be extracted to get more information about the scene. Relations between objects of the same class, objects of different classes or objects and environment are possible, both in a single timeslot or in sucesive timeslots. 
 
 \subsection{Situation Assesment}
 
@@ -130,7 +132,7 @@ Clustering is performed on the foreground extracted to identify the set of point
 
 \subsection{Pattern Recognition}
 
--TODO-
+At this stage, a bounding box is computed for each cluster found in previous stage. Them, the area and center of the bounding box are calculated and this is stored as a Blob entity. Now, blob information and scen model are analyzed in order to get more knowledge about how are blobs distributed over the legs of intersection.
 
 \subsection{Situation Assesment}
 
