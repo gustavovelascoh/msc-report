@@ -33,7 +33,7 @@ In the designing of an IMS, there are four main stages that have to be performed
 
 \subsection{Fusion approaches}
 
-Depending on wheter the system has multiple sensors of the same type or different type, a data fusion approach should be chosen. When data came from same-type sensors, it is usually fused at low levels using techniques for temporal-spatial alignment, depending on sensors configuration. This is the case for a network of lasers or lidars or for multi-camera systems. If the system have different type of sensors, data from them may be fused at mid level, based on extracted features or classes on each subsystem; or may be fused at high level if each subsystem delivers control or decision outputs. The tasks shown in each of the processing stages (\ref{proc_stages}), could be used as fusion blocks for homogeneous or heterogeneous data.
+Depending on wheter the system has multiple sensors of the same type or different type, a data fusion approach should be chosen. When data came from same-type sensors, it is usually fused at low levels using techniques for temporal-spatial alignment, depending on sensors configuration. This is the case for a network of lasers or lidars or for multi-camera systems. If the system have different type of sensors, data from them may be fused at mid level, based on extracted features or classes on each subsystem; or may be fused at high level if each subsystem delivers control or decision outputs. The tasks shown in each of the processing stages (Figure \ref{proc_stages}), could be used as fusion blocks for homogeneous or heterogeneous data.
 
 \section{Validation approaches}
 
@@ -63,16 +63,23 @@ The full description of this dataset is presented in \cite{Strigel2014}.
 
 \section{Architecture proposal}
 
-The proposal presented in this work is based on MFI model processing entities in the sense that a processing block could take one or more inputs related between them and generate an output of the same type or a higher level output. The communication or data exchange approach is based on JDL model, in which data is available over a "bus", where the processing blocks can write to or read from. Three main components of the architecture are defined: Data model, communication scheme and  processing blocks. 
+The proposal presented in this work is based on MFI model processing entities in the sense that a processing block could take one or more inputs related between them and generate an output of the same type or a higher level output. The communication or data exchange approach is based on JDL model, in which data is available over a "bus", where the processing blocks can write to or read from. Three main components of the architecture are defined: communication scheme, data model and  processing blocks. 
 
-\subsection{Data Model}
 
-The data model proposed for the system includes the abstraction of the sensing elements and the intersection itself. For the sensing elements is created a Sensor base class and two derived classes for different type of sensors, Laser class and Camera class.
 
 \subsection{Communication scheme}
 
 In order to isolate the processing tasks of the communication system, a Publisher-Subscriber approach is selected. The benefits of this option is that data can be shared between diferent blocks without generating a dependency from publishers to subscribers. Another benefit is that exposing a defined mechanism for publishing or subscribing, allows the system to be implementation agnostic.
 
 Taking these reasons into account, Redis is chosen as communication platform. As stated in their website, "Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker"\cite{Redis} which support Publisher-Subscriber paradigm, allowing greater scalability and a more dynamic network topology.
+
+For publishers and subscribers to exchange messages, channels are defined with labels using a namespace approach that describe the source of data and the kind of data. For example a channel containing raw data from a laser scanner could be labeled as "".
+%\/sensors\/range\/laser_N\/data\/raw
+Redis is also used as in-memory storage for configuration data, which is not dynamic as the date from the processing flow.   
+
+
+\subsection{Data Model}
+
+The data model proposed for the system includes the abstraction of the sensing elements and the intersection itself. For the sensing elements is created a Sensor base class and two derived classes for different type of sensors, Laser class and Camera class.
 
 \subsection{Processing Blocks}
