@@ -93,7 +93,7 @@ The sensors sets are composed of zero or more sensor objects, as defined previou
 \label{data_model}
 \end{figure}
 
-The purpose of all the labels attributes within each class is to serve as an identifier of the channel in which the entity is publishing or subscribing to; in other words, to identify where is data generated from or where is data going to. For example, channel \texttt{/sensors/range/laser\_1/data/raw} contains raw data from a laser scanner labeled as \texttt{"laser\_1"}. Or channel \texttt{/legs/leg\_3/occupancy/} refers to the occupancy level of the leg labeled as \texttt{"leg\_3"}.
+The purpose of all the labels attributes within each class is to serve as an identifier of the channel in which the entity is publishing or subscribing to; in other words, to identify where is data generated from or where is data going to. For example, channel \texttt{/sensors/range/laser\_1/data/raw} contains raw data from a laser scanner labeled as \texttt{laser\_1"} and \texttt{/legs/leg\_3/occupancy/} refers to the occupancy level of the leg labeled as \texttt{leg\_3}.
 
 
 \subsection{Processing Blocks}
@@ -103,6 +103,76 @@ As stated in previous section, there are defined four stages in the processing f
 Below are detailed different processing blocks implemented as part of the whole architecture proposal, classified by the stage of processing in which are located in the process flow. Also, it is shown the format of data input, data output and parameters needed for configuration and execution.
 
 \subsubsection{Preprocessing}
+\begin{description}
+\item[laser\_background\_remove]laser\_bg\_remove
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/laser_bg_remove.pdf}
+\caption{laser\_bg\_remove}
+\label{laser_bg_remove}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/polar2cart.pdf}
+\caption{polar\_to\_cartesian}
+\label{polar_to_cartesian}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/laser_cart_merge.pdf}
+\caption{laser\_cart\_merge}
+\label{laser_cart_merge}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/points_to_clusters.pdf}
+\caption{points\_to\_clusters}
+\label{points_to_clusters}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/points_to_grid.pdf}
+\caption{points\_to\_grid}
+\label{points_to_grid}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/grid_to_occupancy_level.pdf}
+\caption{grid\_to\_occupancy\_level}
+\label{grid_to_occupancy_level}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/clusters_to_occupancy_level.pdf}
+\caption{clusters\_to\_occupancy\_level}
+\label{clusters_to_occupancy_level}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/occupancy_level_merge.pdf}
+\caption{occupancy\_level\_merge}
+\label{occupancy_level_merge}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/occupancy_level2int_state.pdf}
+\caption{occupancy\_level\_to\_intersection\_state}
+\label{occupancy_level2int_state}
+\end{figure}
+
+\end{description}
+
+
+
+%{laser_background_remove}
 \subsubsection{Feature Analysis}
 \subsubsection{Pattern Recognition}
 \subsubsection{Situation Assesment}
