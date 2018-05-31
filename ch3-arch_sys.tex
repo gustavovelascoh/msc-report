@@ -63,7 +63,7 @@ The full description of this dataset is presented in \cite{Strigel2014}.
 
 \section{Architecture proposal}
 
-The proposal presented in this work is based on MFI model processing entities in the sense that a processing block could take one or more inputs related between them and generate an output of the same type or a higher level output. The communication or data exchange approach is based on JDL model, in which data is available over a "bus", where the processing blocks can write to or read from. Three main components of the architecture are defined: communication scheme, data model and  processing blocks. 
+The proposal presented in this work is based on MFI model processing entities in the sense that a processing block could take one or more inputs related between them and generate an output of the same type or a higher level output. The communication or data exchange approach is based on JDL model, in which data is available over a "bus", where the processing blocks can write to or read from. Four main components of the architecture are defined: communication scheme, data model, information structure and processing blocks. 
 
 
 
@@ -93,7 +93,65 @@ The sensors sets are composed of zero or more sensor objects, as defined previou
 \label{data_model}
 \end{figure}
 
-The purpose of all the labels attributes within each class is to serve as an identifier of the channel in which the entity is publishing or subscribing to; in other words, to identify where is data generated from or where is data going to. For example, channel \texttt{/sensors/range/laser\_1/data/raw} contains raw data from a laser scanner labeled as \texttt{laser\_1"} and \texttt{/legs/leg\_3/occupancy/} refers to the occupancy level of the leg labeled as \texttt{leg\_3}.
+The purpose of all the labels attributes within each class is to serve as an identifier of the channel in which the entity is publishing or subscribing to; in other words, to identify where is data generated from or where is data going to. For example, channel \texttt{/sensors/range/laser\_1/data/raw} contains raw data from a laser scanner labeled as \texttt{"laser\_1"} and \texttt{/legs/leg\_3/occupancy/} refers to the occupancy level of the leg labeled as \texttt{leg\_3}.
+
+\subsection{Information Structure}
+
+Data exchanged between processing blocks or any paramater stored in Redis, is formatted using JavaScript Object Notation (JSON), allowing to use any JSON parser/formatter available in many languages, even it is possible to create simple scripts to interact with the system.
+
+\subsubsection{.imscfg file}
+
+For running, the systems requires first a .imscfg file which describes the scenario and the sensors configuration. This information is stored as a JSON object with the properties decribed in table \ref{imscfg_file}.
+
+\begin{table}[ht!]
+\footnotesize
+\centering
+\begin{tabular}{|c | c|}
+\hline
+\textbf{Property} & \textbf{Description} \\
+\hline
+name & Name of the configuration \\
+\hline
+map & Information of the scene, including map, coordinate system \\ 
+ & and region of interest. \\
+\hline
+cameras & List of camera sensors information \\
+\hline
+range\_sensors & List of range sensors information \\
+\hline
+legs & List of legs information \\
+\hline
+intersection & Information of area of the intersection \\
+\hline
+\end{tabular}
+\caption{Properties in .imscfg JSON file}
+\label{imscfg_file}
+\end{table}
+
+\subsubsection{data messages and configuration parameters}
+
+In addition to .imscfg file, there are different types of messages and parameters which have its own structure, for example used for sensors configuration or processed data. The table \ref{desc_map} gives a description of the types of information used. A more detailed documentation is given in appendix TODO.
+
+\begin{table}[ht!]
+\footnotesize
+\centering
+\begin{tabular}{|c | p{8cm}|}
+\hline
+\textbf{Name} & \textbf{Description} \\
+\hline
+laser\_pol\_msg & Contains a timestamp, an array of N angles and and array of N measurements \\
+\hline
+laser\_cart\_msg & Contains a timestamp, an array of N (x, y) coordinates \\
+\hline
+laser\_cfg & Contains position and orientation information, also has a background model for the laser sensor \\
+\hline
+occgrid\_msg & Contains a timestamp and an occupancy grid in the form of an MxN array \\
+\hline
+\end{tabular}
+\caption{Description of diferent types of messages and parameters used}
+\label{desc_map}
+\end{table}
+
 
 
 \subsection{Processing Blocks}
@@ -101,6 +159,8 @@ The purpose of all the labels attributes within each class is to serve as an ide
 As stated in previous section, there are defined four stages in the processing flow, namely, preprocessing, feature analysis, pattern recognition and situation assessment. Within each of these stages there are different methods and techniques used to process the data and it is possible that those methods are suitable to perform fusion between homogeneous or heterogeneous data.
 
 Below are detailed different processing blocks implemented as part of the whole architecture proposal, classified by the stage of processing in which are located in the process flow. Also, it is shown the format of data input, data output and parameters needed for configuration and execution.
+
+Additionaly, there are included some tools and generic blocks used for dataset reading, data visualization and interactive control.
 
 \subsubsection{Preprocessing}
 \begin{description}
