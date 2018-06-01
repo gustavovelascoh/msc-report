@@ -166,24 +166,44 @@ Additionaly, there are included some tools and generic blocks used for dataset r
 
 \subsubsection{Preprocessing}
 \begin{description}
-\item[laser\_background\_remove]laser\_bg\_remove
+\item[laser\_background\_remove] \hfill
 
-This block takes as input a message of type laser\_pol\_msg, which contains raw readings from laser sensor. Also, it takes a laser\_cfg parameter which includes a background model for the laser sensor, generated from a set of scans and taking the maximum measurement in each angle of scanning, defined as follows:
-
-Let suppose we have N scans from the laser and $d_{\theta i}$ be the distance measure at angle $\theta$ in scan $i$. Thus, the background value for that angle $\theta$ is $bg_\theta = max( \{d_{\theta i} | 1 < i < N\})$ and the background model is $bg = \{bg_\theta | \theta \in \Theta\} $ where $\Theta$ is the set of angles of scanning, in this case from -90\degree to 90\degree with 0.5\degree step.
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/laser_bg_remove.pdf}
+\includegraphics[scale=0.8]{fig/3/laser_bg_remove.pdf}
 \caption{laser\_bg\_remove}
 \label{laser_bg_remove}
 \end{figure}
 
+This block takes as input a message of type laser\_pol\_msg, which contains raw readings from laser sensor. Also, it takes a laser\_cfg parameter which includes a background model for the laser sensor, generated from a set of scans and taking the maximum measurement in each angle of scanning, defined as follows:
+
+Let suppose we have N scans from the laser and $d_{\theta i}$ be the distance measure at angle $\theta$ in scan $i$. Thus, the background value for that angle $\theta$ is $bg_\theta = max( \{d_{\theta i} | 1 < i < N\})$ and the background model is $bg = \{bg_\theta | \theta \in \Theta\} $ where $\Theta$ is the set of angles of scanning, in this case from -90\degree to 90\degree with 0.5\degree step.
+
+\item[laser\_polar2cart] \hfill
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/polar2cart.pdf}
+\includegraphics[scale=0.8]{fig/3/polar2cart.pdf}
 \caption{polar\_to\_cartesian}
 \label{polar_to_cartesian}
 \end{figure}
+
+This block takes as input a message of type laser\_pol\_msg for converting it into cartesian coordinates referenced to global system. For this reason, it also takes a laser\_cfg parameter to include laser position information in the conversion. Output message contains a set of x, y points obtained from the following equations:
+
+\begin{eqnarray*}
+O_x = I_\rho*\cos{\phi}+S_x \\
+O_y = I_\rho*\sin{\phi} + S_y \\
+\phi = I_\theta + S_\theta
+\end{eqnarray*}
+
+Where:
+
+$(S_x, S_y, S_\theta)$: Position and orientation of the laser \\
+$(I_\rho, I_\theta )$: Input message (distance and angle arrays) \\
+$(O_x, O_y )$: Output message (x and y arrays) \\
+
+
+\item[laser\_cart\_merge] \hfill
 
 \begin{figure}[ht!]
 \centering
