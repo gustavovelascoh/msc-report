@@ -167,6 +167,10 @@ Additionaly, there are included some tools and generic blocks used for dataset r
 \subsubsection{Preprocessing}
 \begin{description}
 \item[laser\_background\_remove]laser\_bg\_remove
+
+This block takes as input a message of type laser\_pol\_msg, which contains raw readings from laser sensor. Also, it takes a laser\_cfg parameter which includes a background model for the laser sensor, generated from a set of scans and taking the maximum measurement in each angle of scanning, defined as follows:
+
+Let suppose we have N scans from the laser and $d_{\theta i}$ be the distance measure at angle $\theta$ in scan $i$. Thus, the background value for that angle $\theta$ is $bg_\theta = max( \{d_{\theta i} | 1 < i < N\})$ and the background model is $bg = \{bg_\theta | \theta \in \Theta\} $ where $\Theta$ is the set of angles of scanning, in this case from -90\degree to 90\degree with 0.5\degree step.
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{fig/3/laser_bg_remove.pdf}
