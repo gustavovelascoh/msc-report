@@ -13,6 +13,8 @@
 \chapter [Architecture Description and System Specification]{Architecture Description and System Specification}
 \chaptermark {System Description}
 
+\epigraph{"Perfect is enemy of good"}{Voltaire}
+
 Although several types of sensors are used for intersection monitoring and supervision, the use of cameras, lasers and lidars has increased due to advances in sensors manufacturing and computing capabilities. Such enhancements allows to deploy more of those types of sensors per scenario and it is required to define some processing stages from raw data capture through decision and control stages. It is also needed to test and validate the developments prior to a real and full functional implementation. The first part of this chapter describes the main stages in a intersection management system, from data preprocessing to situation assesment. Then, two validation tools for IMS applications are described, simulation models and datasets. And finally, the proposed architecture for the implementation of an IMS system is presented.
 
 \section{Multisensor IMS}
@@ -167,7 +169,7 @@ clustering\_cfg & Contains configuration about clustering algorithm and paramete
 
 
 
-\subsection{Processing Blocks}
+\subsection{Processing Blocks} \label{proc_blocks}
 
 As stated in previous section, there are defined four stages in the processing flow, namely, preprocessing, feature analysis, pattern recognition and situation assessment. Within each of these stages there are different methods and techniques used to process the data and it is possible that those methods are suitable to perform fusion between homogeneous or heterogeneous data.
 
@@ -225,6 +227,8 @@ $(O_x, O_y )$: Output message (x and y arrays) \\
 
 This block takes as input messages of type laser\_cart\_msg coming from different sensors and merges them into a single message, based on a sampling period $T$.
 
+\subsubsection{Feature Analysis}
+
 \item[points\_to\_cluster] \hfill
 
 \begin{figure}[ht!]
@@ -273,6 +277,7 @@ Now, the update procedure for the probability in each cell is described for the 
 
 \todo{update policy}
 
+\subsubsection{Pattern Recognition}
 
 
 \begin{figure}[ht!]
@@ -296,6 +301,8 @@ Now, the update procedure for the probability in each cell is described for the 
 \label{occupancy_level_merge}
 \end{figure}
 
+\subsubsection{Situation Assesment}
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{fig/3/occupancy_level2int_state.pdf}
@@ -305,10 +312,6 @@ Now, the update procedure for the probability in each cell is described for the 
 
 \end{description}
 
-
-
-%{laser_background_remove}
-\subsubsection{Feature Analysis}
-\subsubsection{Pattern Recognition}
-\subsubsection{Situation Assesment}
 \subsubsection{Tools and Utilities}
+
+\subsection{Conclusions}
