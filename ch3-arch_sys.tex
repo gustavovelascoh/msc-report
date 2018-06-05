@@ -45,9 +45,13 @@ Transportation is a highly complex activity where different elements, like infra
 
 Three widely-known models for this kind of analysis are macroscopic model, microscopic model and mesoscopic model. The macroscopic model of traffic flow is based on a hydrodynamic analogy, modeling traffic as a fluid process characterized by three main variables, density, volume and speed, and the objective is to describe time-space evolution of those variables.
 
+\todo{Simulators description (?)}
 
 A more detailed analysis of traffic simulation models and simulation platforms could be found in \cite{AdamsBoxill2000, Barcelo2000, Kitamura2005, Lieberman1992}
-\subsubsection{Simulators Classification}
+
+
+
+
 \subsection{Intersection monitoring Datasets}
 
 As mentioned in section \ref{s23}, POSS-i and Ko-PER projects are leading the development of multisensor Intersection Management Systems. One of the contributions of these projects is the creation of datasets of such systems. They provide camera and laser information of a monitored intersection in Peking, China and Aschaffenburg, Germany, respectively. Next, a description of these two datasets will be given.
@@ -55,6 +59,9 @@ As mentioned in section \ref{s23}, POSS-i and Ko-PER projects are leading the de
 \subsubsection{POSSi Dataset }
 
 POSSi dataset\footnote{Available at http://www.poss.pku.edu.cn/download.html}
+
+\todo{Dataset description (?)}
+
 \subsubsection{KoPER Dataset }
 
 Ko-PER dataset\footnote{Available at http://www.uni-ulm.de/in/mrm/forschung/datensaetze.html}
@@ -149,6 +156,10 @@ occgrid\_msg & Contains a timestamp and an occupancy grid in the form of an MxN 
 \hline
 occgrid\_cfg & Contains occupancy grid configuration for the scene \\
 \hline
+clustering\_msg & Contains a set of clusters, each of them with an ID and a set of points \\
+\hline
+clustering\_cfg & Contains configuration about clustering algorithm and parameters \\
+\hline
 \end{tabular}
 \caption{Description of diferent types of messages and parameters used}
 \label{desc_map}
@@ -212,30 +223,68 @@ $(O_x, O_y )$: Output message (x and y arrays) \\
 \label{laser_cart_merge}
 \end{figure}
 
+This block takes as input messages of type laser\_cart\_msg coming from different sensors and merges them into a single message, based on a sampling period $T$.
+
+\item[points\_to\_cluster] \hfill
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/points_to_clusters.pdf}
+\includegraphics[scale=0.8]{fig/3/points_to_clusters.pdf}
 \caption{points\_to\_clusters}
 \label{points_to_clusters}
 \end{figure}
 
+The input message for this block is a set of points corresponding to objects scanned by lasers. Clustering is performed over this input to identify the points belonging to the same object. The algorithm used in this implementation is DBSCAN, which stands for Density-Based Spatial Clustering of Applications with Noise. This algorithm does not need an estimated number of clusters as input, instead of this, it requires only two parameters: a minimum number of points per cluster, m, and a neighbourhood measure, $\epsilon$. A detailed description of the algorithm, can be found in \cite{Ester96}.
+
+As output, a message of type clustering\_msg, containing information like clusters ID and set of points belonging to each cluster, is delivered.
+
+\item[points\_to\_occgrid] \hfill
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/points_to_grid.pdf}
+\includegraphics[scale=0.8]{fig/3/points_to_grid.pdf}
 \caption{points\_to\_grid}
 \label{points_to_grid}
 \end{figure}
 
+This block generates a occupancy grid based on cartesian data from laser. As parameters, this block receives a cell size for the grid, the laser configuration and the scene configuration. The grid size is of $N_C$ Columns and $N_R$ rows, obtained as follows:
+
+\begin{eqnarray*}
+X = x_{max}-x_{min} \\
+Y = y_{max}-y_{min} \\
+N_C = ceil(X/C)+1 \\
+N_R = ceil(Y/C)+1 \\
+\end{eqnarray*}
+
+Where $(x_{min}, y_{min})$ and $(x_{max}, y_{max})$ are the bottom-left and top-right coordinates of the region of interest in the scene, respectively.
+
+Each cell of the grid will store a value indicating a probability of that cell being occupied. Initially, all cells have a value of $0.5$. In order, to update the grid using data from laser, the points corresponding to laser position and measures, should be located in a cell of the grid, and then mark it as occupied. The following equations show how a point $P = (P_x, P_y)$ is tranformed to a cell $C_{ij}$, where $i$ is the column and $j$ is the row in the grid:
+
+\begin{eqnarray*}
+i = ceil((P_x - x_{min})/C - 0.5) \\
+j = N_R - ceil((P_y - y_{min})/C - 0.5) \\
+\end{eqnarray*}
+
+Then, the cells that form a straigh line between the cell of laser position and the cells of each laser measure, should be marked as empty. To get the list of these cells Bresenham's algorithm \todo{Check bresenham algorithm reference} is used. This algorithm is widely used in computer graphics due to it simplicity and because it uses integer arithmetics, making it computationally cheap.
+
+The input of this algorithm is a pair of coordinates, the endpoints of the line, and as result, the set of points that completes the line between, is returned.
+
+Now, the update procedure for the probability in each cell is described for the function $f$:
+
+\todo{update policy}
+
+
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/grid_to_occupancy_level.pdf}
+\includegraphics[scale=0.8]{fig/3/grid_to_occupancy_level.pdf}
 \caption{grid\_to\_occupancy\_level}
 \label{grid_to_occupancy_level}
 \end{figure}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/clusters_to_occupancy_level.pdf}
+\includegraphics[scale=0.8]{fig/3/clusters_to_occupancy_level.pdf}
 \caption{clusters\_to\_occupancy\_level}
 \label{clusters_to_occupancy_level}
 \end{figure}
