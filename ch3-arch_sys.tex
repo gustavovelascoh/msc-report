@@ -183,7 +183,7 @@ Additionaly, there are included some tools and generic blocks used for dataset r
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/laser_bg_remove.pdf}
+\includegraphics[scale=1]{fig/3/laser_bg_remove.pdf}
 \caption{laser\_bg\_remove}
 \label{laser_bg_remove}
 \end{figure}
@@ -196,7 +196,7 @@ Let suppose we have N scans from the laser and $d_{\theta i}$ be the distance me
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/polar2cart.pdf}
+\includegraphics[scale=1]{fig/3/polar2cart.pdf}
 \caption{polar\_to\_cartesian}
 \label{polar_to_cartesian}
 \end{figure}
@@ -220,20 +220,32 @@ $(O_x, O_y )$: Output message (x and y arrays) \\
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/laser_cart_merge.pdf}
+\includegraphics[scale=1]{fig/3/laser_cart_merge.pdf}
 \caption{laser\_cart\_merge}
 \label{laser_cart_merge}
 \end{figure}
 
 This block takes as input messages of type laser\_cart\_msg coming from different sensors and merges them into a single message, based on a sampling period $T$.
 
-\subsubsection{Feature Analysis}
+\item[camera\_background\_remove] \hfill
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/camera_bg_remove.pdf}
+\caption{camera\_background\_remove block}
+\label{cam_bg_remove}
+\end{figure}
+
+\end{description}
+
+
+\subsubsection{Feature Analysis}
+\begin{description}
 \item[points\_to\_cluster] \hfill
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/points_to_clusters.pdf}
+\includegraphics[scale=1]{fig/3/points_to_clusters.pdf}
 \caption{points\_to\_clusters}
 \label{points_to_clusters}
 \end{figure}
@@ -246,7 +258,7 @@ As output, a message of type clustering\_msg, containing information like cluste
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/points_to_grid.pdf}
+\includegraphics[scale=1]{fig/3/points_to_grid.pdf}
 \caption{points\_to\_grid}
 \label{points_to_grid}
 \end{figure}
@@ -277,41 +289,132 @@ Now, the update procedure for the probability in each cell is described for the 
 
 \todo{update policy}
 
-\subsubsection{Pattern Recognition}
-
+\item[occgrid\_merge] \hfill
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/grid_to_occupancy_level.pdf}
-\caption{grid\_to\_occupancy\_level}
-\label{grid_to_occupancy_level}
+\includegraphics[scale=1]{fig/3/occgrid_merge.pdf}
+\caption{occgrid\_merge}
+\label{occgrid_merge}
 \end{figure}
 
+\item[camera\_blobs] \hfill
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.8]{fig/3/clusters_to_occupancy_level.pdf}
+\includegraphics[scale=1]{fig/3/camera_blobs.pdf}
+\caption{camera\_blobs}
+\label{camera_blobs}
+\end{figure}
+
+\item[camera\_blobs2occgrid] \hfill
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/camera_blobs2occgrid.pdf}
+\caption{camera\_blobs2occgrid}
+\label{camera_blobs2occgrid}
+\end{figure}
+
+\end{description}
+
+\subsubsection{Pattern Recognition}
+\begin{description}
+
+\item[clusters\_vehicle\_counter] \hfill
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/clusters_veh_counter.pdf}
+\caption{clusters\_vehicle\_counter}
+\label{clusters_vehicle_counter}
+\end{figure}
+
+
+\item[clusters\_to\_occupancy\_level] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/clusters2occlvl.pdf}
 \caption{clusters\_to\_occupancy\_level}
 \label{clusters_to_occupancy_level}
 \end{figure}
 
+
+\item[occgrid\_vehicle\_counter] \hfill
+
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/occupancy_level_merge.pdf}
-\caption{occupancy\_level\_merge}
-\label{occupancy_level_merge}
+\includegraphics[scale=1]{fig/3/occgrid_veh_counter.pdf}
+\caption{occgrid\_vehicle\_counter}
+\label{occgrid_vehicle_counter}
 \end{figure}
 
-\subsubsection{Situation Assesment}
-
+\item[occgrid\_to\_occupancy\_level] \hfill
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.7]{fig/3/occupancy_level2int_state.pdf}
-\caption{occupancy\_level\_to\_intersection\_state}
-\label{occupancy_level2int_state}
+\includegraphics[scale=1]{fig/3/occgrid2occlvl.pdf}
+\caption{occgrid\_to\_occupancy\_level}
+\label{occgrid_to_occupancy_level}
+\end{figure}
+
+\end{description}
+
+\subsubsection{Situation Assesment}
+\begin{description}
+
+\item[vehicle\_counter\_merge] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/veh_cnt_merge.pdf}
+\caption{vehicle\_counter\_merge}
+\label{vehicle_counter_merge}
+\end{figure}
+
+\item[occupancy\_level\_merge] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/occlvl_merge.pdf}
+\caption{occupancy\_level\_merge}
+\label{occupancy_level_merge}
 \end{figure}
 
 \end{description}
 
 \subsubsection{Tools and Utilities}
+\begin{description}
+
+\item[laser\_publisher] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/laser_publisher.pdf}
+\caption{laser\_publisher}
+\label{laser_publisher}
+\end{figure}
+
+\item[camera\_publisher] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/camera_publisher.pdf}
+\caption{camera\_publisher}
+\label{camera_publisher}
+\end{figure}
+
+\item[dataset\_control] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/dataset_ctrl.pdf}
+\caption{dataset\_control}
+\label{dataset_control}
+\end{figure}
+
+\item[data\_viewer] \hfill
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=1]{fig/3/data_viewer.pdf}
+\caption{data\_viewer}
+\label{data_viewer}
+\end{figure}
+
+\end{description}
 
 \subsection{Conclusions}
