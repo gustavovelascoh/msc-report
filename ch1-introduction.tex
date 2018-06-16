@@ -1,10 +1,17 @@
 % Introduction
-\chapter [Introduction]{Introduction}
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}%
 \chaptermark{Introduction}
 
-\section{Goals}
+Traditionally, transport systems vision has been constrainted to the set of elements belonging to infrastructure and the vehicles using it. As population increases and cities growth, the number of vehicles going through world roads also increases, but the growth rate of road network is lower. This situation leads to low quality in transportation; congestion and collisions affect movility in all cities in the world and the costs of eficient and long-lasting solutions are high.
 
-The main goal for this proposal is to conceive a multisensor architecture for an intersection management system and deploy it in a simulated scenario. In order to achieve this goal, these objectives were set:
+One of the critical places where is imperative to improve safety and efficiency are vehicular intersections, because at these points many vehicles with different directions and speeds meet each other, increasing probability of incidents. Almost 40 percent of traffic accidents reported in US in 2008, were intersection related \cite{Choi2010}. In Colombia, at 2011 most of accidents in main cities were at intersections \cite{CorporacionFondodePrevencionVial2010}.
+
+In order to address different issues presented at intersections, several types of systems and applications have been proposed for different purposes like intersection management, vehicle counting, events warning, etc. These applications relies on different type of monitoring mechanisms, going from human supervision to automated sensors, but, because a high volume of data is generated in an intersection, it is not enough to have just one source of information.
+
+For this reason, various sensors have been used for intersection monitoring, like magnetic sensors, laser-scanners and cameras, each of them providing different types of information about the scene. This information needs to be merged into a single model that represents the intersection state. The reliability of this model depends on the quality of the processing and on the fusion scheme selected for the data. The more reliable the model is, the more precise and efficient management over the intersection will be.
+
+Based on this need of reliabilty in the scene model, the main goal set for this work is to conceive a multisensor architecture for an intersection management system and deploy it in a simulated scenario. In order to achieve this goal, these objectives were set:
 
 \begin{itemize}
 \item To make a literature review on intelligent transportation systems, focusing on developments about intersection management
@@ -14,4 +21,13 @@ The main goal for this proposal is to conceive a multisensor architecture for an
 \item To set a test and evaluation protocol for the developments made on the choosen platform 
 \end{itemize}
 
-\section{Scope}
+
+The following chapters of this report are structured as follows:
+
+Chapter 1 contains a comprehensive review on sensor fusion in intersection management systems, divided in three sections, first, sensor fusion approaches and model are described. Second, intersection management systems definition is presented along with a proposed taxonomy of those systems. Also a comprehensive list of developments is presented. Third, a review on IMS deployments that include a component of sensor fusion is described.
+
+Chapter 2 describes the proposal, starting on explaining what kind of processing is required and how sensor fusion could be performed in an intersection management system. Then, two validation approaches for an IMS are considered, simulators and datasets. Also, four components for the architecture proposal are detailed, i.e communication scheme, data model, information structure and processing blocks.
+
+Chapter 3 presents the result of three example implementations using the architecture: Single-laser case, multiple laser case and multiple laser and camera case. These test cases are evaluated and compared, both in application performance, using vehicle count as evaluation metric, and in computational resources usage.
+
+Chapter 4 summarizes the conclusions of the development of the whole work, remarking on contributions made like software and applications generated, academic products, and future developments and improvements for the system, including application performance, platforms upgrade, UX/UI improvements, scalability and integration with IOT and Smart Cities solutions.
