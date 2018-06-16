@@ -56,6 +56,8 @@ One of the first proposals of fusion architecture, and probably one of the most 
 \label{JDLmodel}
 \end{figure}
 
+\todo{Create custom figure}
+
 The first stage, referred as level-0 is the source preprocessing in which raw data is handled to concentrate the more pertinent data for the current situation. The level-1 is for object refinement, starting with the alignment of the data in a commonly space-time reference frame. Then, performs identification and tracking of objects using different techniques. Situation refinement is at level-2, which takes observed and partially-observed object from level-1 and tries to find a contextual description between them. Level-3, threat refinement, is the level in which results from level-2 are interpreted looking for possible advantages and disadvantages for the system to operate, based on previous knowledge and predictions about executing an action.
 
 \subsubsection{Multisensor Fusion Integration model}
@@ -69,11 +71,13 @@ Luo and Kai, in \cite{Luo1989, Luo1990}, proposed a full integration model for d
 \label{fusionClasses}
 \end{figure}
 
+\todo{Increase font size of this figure}
+
 Also, they made a clear distinction between multisensor fusion and multisensor integration, being the former the process in which information provided by a set of sensors is combined in any of the three levels aforementioned, and the latter is how sensor fusion could be integrated in a full system in order to assist in a particular task. As is depicted in figure \ref{MFIArch}, sensor fusion is an element of the whole MFI architecture, which also includes block for sensor managing tasks, like control, selection and registration of sensors, previously to the fusion process. A sensor processing stage and a system controlling module are also included after the sensor fusion stage.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.4]{fig/2/MFIArch.png}
+\includegraphics[scale=0.5]{fig/2/MFIArch.png}
 \caption{Multisensor Fusion Integration architecture (from \cite{Luo2011}).}
 \label{MFIArch}
 \end{figure}
@@ -132,7 +136,7 @@ Luo in \cite{Luo2011} propose a classification for fusion algorithms based on th
 \hline
 \multicolumn{2}{|c|}{\textit{Estimation methods}} & \textit{Classification methods} & \textit{Inference methods} \\
 \hline
-\parbox{2.5cm}{
+\parbox{2.4cm}{
 	Recursive:
 	\begin{itemize}[leftmargin=.07in]
 		\item Kalman filter
@@ -145,7 +149,7 @@ Luo in \cite{Luo2011} propose a classification for fusion algorithms based on th
 	\end{itemize}
 	}
  & 
- \parbox{2.5cm}{	 
+ \parbox{2.4cm}{	 
  	Covariance-based:
 	\begin{itemize}[leftmargin=.07in]
 		\item Cross covariance
@@ -166,7 +170,7 @@ Luo in \cite{Luo2011} propose a classification for fusion algorithms based on th
 	\end{itemize}
 	}
 &
-\parbox{3cm}{	 
+\parbox{2.9cm}{	 
 	\begin{itemize}[leftmargin=.07in, noitemsep]
 		\item Bayesian inference
 		\item Particle filters
@@ -306,49 +310,49 @@ The second relevant project, Ko-PER project\footnote{http://ko-fas.de/english/ko
 In the proposed work, there is not a deployment of sensors in an intersection scenario, but datasets will be used instead for validations purposes. Also, one of the objectives is to explore and propose a modular fusion architecture/framework for IMS based on cameras and laser sensors. In table \ref{summary_FusIMS} a summary of aforementioned developments is presented, including proposed work.
 
 \begin{table}[!t]
-\begin{tabular}{|p{0.13\linewidth}|c|p{0.125\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|c|}
+\begin{tabular}{|c|p{0.125\linewidth}|p{0.15\linewidth}|p{0.16\linewidth}|c|}
 \hline
 
-\textbf{Reference} & \textbf{Project} & \textbf{Sensors} & \textbf{Target} & \textbf{Fusion} & \textbf{Framework} \\
+\textbf{Project} & \textbf{Sensors} & \textbf{Target} & \textbf{Fusion} & \textbf{Framework} \\
 \hline
 
-\cite{Zhao2006} & POSSi & Laser & Vehicles, pedestrians & - & No \\
+POSSi \cite{Zhao2006}& Laser & Vehicles, pedestrians & - & No \\
 \hline
 
-\cite{Song2008} & POSSi & Lasers & Pedestrians & Low-Level & No \\
+POSSi \cite{Song2008}& Lasers & Pedestrians & Low-Level & No \\
 \hline
 
-\cite{Zhao2008} & POSSi & Lasers & Vehicles, pedestrians & Low-Level & No \\
+POSSi \cite{Zhao2008}& Lasers & Vehicles, pedestrians & Low-Level & No \\
 \hline
 
-\cite{Zhao2009} & POSSi & Lasers, Camera & Vehicles, pedestrians & Low-Level, High-Level & No \\
+POSSi \cite{Zhao2009}& Lasers, Camera & Vehicles, pedestrians & Low-Level, High-Level & No \\
 \hline
 
-\cite{Zhao2012} & POSSi & Lasers & Vehicles, pedestrians & Low-Level & No \\
+POSSi \cite{Zhao2012}& Lasers & Vehicles, pedestrians & Low-Level & No \\
 \hline
 
-\cite{Goldhammer2012} & Ko-PER & Lasers, Cameras & Vehicles, pedestrians & Low-Level, Mid-Level & No \\
+Ko-PER \cite{Goldhammer2012} & Lasers, Cameras & Vehicles, pedestrians & Low-Level, Mid-Level & No \\
 \hline
 
-\cite{Meissner2012} & Ko-PER & Lasers & Pedestrians & Low-Level & No \\
+Ko-PER \cite{Meissner2012} & Lasers & Pedestrians & Low-Level & No \\
 \hline
 
-\cite{Meissner2013} & Ko-PER & Lasers & Vehicles, pedestrians & Low-Level & No \\
+Ko-PER \cite{Meissner2013} & Lasers & Vehicles, pedestrians & Low-Level & No \\
 \hline
 
-\cite{Meissner2013a, Meissner2013b} & Ko-PER & Lasers, Cameras & Vehicles, pedestrians & Low-Level, Mid-Level & No \\
+Ko-PER \cite{Meissner2013a, Meissner2013b} & Lasers, Cameras & Vehicles, pedestrians & Low-Level, Mid-Level & No \\
 \hline
 
-\cite{Strigel2013} & Ko-PER & Cameras & Vehicles & Low-Level & No \\
+Ko-PER \cite{Strigel2013}& Cameras & Vehicles & Low-Level & No \\
 \hline
 
-\cite{Meissner2014} & Ko-PER & Lasers, Cameras & Vehicles, pedestrians & Low-Level, Mid-Level & No \\
+Ko-PER \cite{Meissner2014}& Lasers, Cameras & Vehicles, pedestrians & Low-Level, Mid-Level & No \\
 \hline
 
 %\cite{} &  &  &  &  &  \\
 %\hline
 
-\textbf{Proposed work} & - & \textbf{Lasers, Cameras} & \textbf{Vehicles} & \textbf{Low-Level, Mid-Level, High-Level} & \textbf{Yes} \\
+\textbf{Proposed work} & \textbf{Lasers, Cameras} & \textbf{Vehicles} & \textbf{Low-Level, Mid-Level, High-Level} & \textbf{Yes} \\
 \hline
 
 \end{tabular}
