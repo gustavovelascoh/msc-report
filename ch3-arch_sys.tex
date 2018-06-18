@@ -58,7 +58,7 @@ A more detailed analysis of traffic simulation models and simulation platforms c
 
 As mentioned in section \ref{s23}, POSS-i and Ko-PER projects are leading the development of multisensor Intersection Management Systems. One of the contributions of these projects is the creation of datasets of such systems. They provide camera and laser information of a monitored intersection in Peking, China and Aschaffenburg, Germany, respectively. Next, a description of these two datasets will be given.
 
-\subsubsection{POSSi Dataset }
+\subsubsection{POSSi Dataset } \label{possi_ds}
 
 POSSi dataset\footnote{Available at http://www.poss.pku.edu.cn/download.html}
 
@@ -72,7 +72,14 @@ The full description of this dataset is presented in \cite{Strigel2014}.
 
 \section{Architecture proposal}
 
-The proposal presented in this work is based on MFI model processing entities in the sense that a processing block could take one or more inputs related between them and generate an output of the same type or a higher level output. The communication or data exchange approach is based on JDL model, in which data is available over a "bus", where the processing blocks can write to or read from. Four main components of the architecture are defined: communication scheme, data model, information structure and processing blocks. 
+The proposal presented in this work is based on MFI model processing entities in the sense that a processing block could take one or more inputs related between them and generate an output of the same type or a higher level output, that means that some blocks perform fusion while others just do some processing on incoming data. The communication or data exchange approach is based on JDL model, in which data is available over a "bus", where the processing blocks can write to or read from. And an information model is defined for abstract the elements of the scene, set a format for message exchange and define global and local configuration parameters. A general block diagram is shown in figure \ref{proposal_blocks}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{fig/3/proposal_blocks.pdf}
+\caption{General overview of proposed architecture and its components. Red for the communication scheme, green for data model and blue for processing blocks}
+\label{proposal_blocks}
+\end{figure} 
 
 
 
