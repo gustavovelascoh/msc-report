@@ -2,20 +2,36 @@
 \chapter {Conclusions}
 
 \section{General Conclusions}
+
+The inclusion of information and communication technologies in transportation systems have been rapidly increasing during the last years, making it possible to test and deploy novel solutions to address issues like safety, congestion, rules violation and many other concerns that affect the quality of transportation.
+
+Intersection monitoring is an active need in the purpose of improve traffic performance, and the option to measure its current state in an automated and intelligent way, is of great interest for local authorities and governments in order to develop policies and control schemes on short, mid or long-term basis.
+
+When deploying a system for intersection monitoring, it is desirable to have variety of sensors, because this allows to have more complementary information in order to generate an accurate representation of the interection. But more important than the quantity of sensors, is how the data for all installed sensors will be merged.
+
+For this reason, data fusion techniques are in constant development. Algorithms that were not feasible to use some years ago, are now being deployed thanks to improvements on computational capabilities, storage resources and communications systems.
+
+Before deploy an interesection management system in a real scenario, validation is a must. Datasets are the best option for doing it, because simulators are still in an early stage. The most suitable simulators, although not conceived for this purpose, are the ones used for autonomous driving platforms. These simulators could allow to include complex sensors like lidars and cameras on infrastructure, and include vehicles with autonomous behaviour in the scenario.
+
+
 \section{Contributions}
 
-A scalable, modular system for traffic control monitoring at intersection. Both for experimentation and real deployment.
+The main contribution derived from the execution of this project is a scalable, modular system for traffic monitoring at an intersection. This system was concieved for use both in experimentation cases and real deployment. The software implementation of the system uses at its core a set of tools and libraries ready for industrial and commercial cases.
 
-Set of software repositories for application and for available datasets containing intersection data.
+Another contribution is a comprehensive review on intersection management systems, including a classification scheme based on its components and its main application. This could serve to readers as an introductory resource on how has been the evolutions of those systems and what is the future of them.
 
-Pair of articles submmited to events, one for architecture description and example implementation and another for application comparison. 
+In addition to this, a set of software repositories are available, one for the application and another one summarizing available datasets containing intersection data. The purpose of this is to let other people review, test and give their opinion about the system. This feedback would be used for new features and improvements. 
+
+On the other side, a couple of articles are being reviewed previous to be submmited to journal. One article is for architecture description and example implementation and another for application comparison.
 
 \section{Future Work}
 
-Generation of our own dataset.
+Aiming to continue the work started by this project, there are several opportunities of improvement that have been identified. The more relevant and feasible in the short-term are the following:
 
-Optimization of communication scheme.
+Generation of our own dataset. Taking into account that PSI reserch group have a laser-scanner, it would be great to generate a dataset for local intersections. From a low-traffic intersection in the campus to a high-traffic intersection in the surroundings. Allowing to test the system under different conditions and do not depend on 3rd party data.
 
-Integration of new types of sensors
+Software and Platforms Improvements. As described, the system comprises different elements, and each of them could be improved. For example, evaluate alternatives in communication with low-latency. Optimize message exchange format in order to reduce bandwith usage. Software code optimization to reduce CPU comsumption. Improve user experience through the development of a more friendly interface, taking into account desktop, web and /or mobile options.
 
-Creation of a more friendly user interface.
+New types of sensors. Although the system was tested with lasers and a camera, scalability is one of the main features of it. This allows to include new sensors, and develop the needed processing blocks to integrate their information into the dataflow of the system and improve its quality and its efficiency.
+
+Integration with other technologies and new trends. At this moment, there are many advances and trends that could be used along an intersection management system to improve the usefullness and relevance of these projects in real deployements. It is important new versions of the system, will be aligned with topics like Smart cities for authorities/Government integration, Internet of things as a new massive source of information, Cloud/Fog computing for scalable and distributed processing, or Big Data and Data Analytics for traffic insights and forecasting.
