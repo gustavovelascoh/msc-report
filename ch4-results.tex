@@ -6,9 +6,9 @@ The selected dataset for testing the system is the one from POSSi project (secti
  
 
 \section{Test Configurations}
-In order to test the proposed architecture, three different configurations have been selected. The first configuration is using just one laser sensor. The second configuration is based on multiple laser sensors, Finally, the third configuration uses multiple lasers along with a camera.
+In order to test the proposed architecture, two different configurations have been selected. The first configuration is using just the camera information. The second configuration is based on multiple laser sensors along with the camera.
 
-Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from sensors, lasers and cameras, to produce an output of higher level. In this case, vehicle counting is the metric used for evaluation.
+Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, vehicle counting is the metric used for evaluation.
 
 The following table lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element.
 
@@ -61,7 +61,7 @@ R & camera\_blobs2occgrid \\
 \end{table}
 
 
-\subsection{Case 1: Single Laser}
+\subsection{Case 1: Single Camera}
 
 \begin{figure}[ht!]
 \centering
@@ -84,14 +84,14 @@ TODO
 
 TODO
 
-\subsection{Case 3: Multiple Lasers and camera}
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=0.7]{fig/4/test_configuration3.pdf}
-\caption{Multiple lasers and camera configuration}
-\label{tconf3}
-\end{figure}
+%\subsection{Case 3: Multiple Lasers and camera}
+%
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=0.7]{fig/4/test_configuration3.pdf}
+%\caption{Multiple lasers and camera configuration}
+%\label{tconf3}
+%\end{figure}
 
 TODO
 

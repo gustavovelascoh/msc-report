@@ -54,7 +54,7 @@ A more detailed analysis of traffic simulation models and simulation platforms c
 
 
 
-\subsection{Intersection monitoring Datasets}
+\subsection{Intersection monitoring Datasets} \label{possi_ds}
 
 As mentioned in section \ref{s23}, POSS-i \footnote{Available at http://www.poss.pku.edu.cn/download.html} and Ko-PER \footnote{Available at http://www.uni-ulm.de/in/mrm/forschung/datensaetze.html} projects are leading the development of multisensor Intersection Management Systems. One of the contributions of these projects is the creation of datasets of such systems. They provide camera and laser information of a monitored intersection in Peking, China and Aschaffenburg, Germany, respectively.
 
@@ -236,14 +236,14 @@ $(O_x, O_y )$: Output message (x and y arrays) \\
 
 This block takes as input messages of type laser\_cart\_msg coming from different sensors and merges them into a single message, based on a sampling period $T$.
 
-\item[camera\_background\_remove] \hfill
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/camera_bg_remove.pdf}
-\caption{camera\_background\_remove block}
-\label{cam_bg_remove}
-\end{figure}
+%\item[camera\_background\_remove] \hfill
+%
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/camera_bg_remove.pdf}
+%\caption{camera\_background\_remove block}
+%\label{cam_bg_remove}
+%\end{figure}
 
 \end{description}
 
@@ -272,7 +272,7 @@ As output, a message of type clustering\_msg, containing information like cluste
 \label{points_to_grid}
 \end{figure}
 
-This block generates a occupancy grid based on cartesian data from laser. As parameters, this block receives a cell size for the grid, the laser configuration and the scene configuration. The grid size is of $N_C$ Columns and $N_R$ rows, obtained as follows:
+This block generates a occupancy grid based on cartesian data from laser sensors. The cartesian data received from sensors is merged in a timeslot basis, filling a buffer for each sensor and processing available data using a defined period $T_{om}$. As parameters, this block receives a cell size for the grid, the laser sensors configuration and the scene configuration. The grid size is of $N_C$ Columns and $N_R$ rows, obtained as follows:
 
 \begin{eqnarray*}
 X = x_{max}-x_{min} \\
@@ -290,22 +290,12 @@ i = ceil((P_x - x_{min})/C - 0.5) \\
 j = N_R - ceil((P_y - y_{min})/C - 0.5) \\
 \end{eqnarray*}
 
-Then, the cells that form a straigh line between the cell of laser position and the cells of each laser measure, should be marked as empty. To get the list of these cells Bresenham's algorithm \todo{Check bresenham algorithm reference} is used. This algorithm is widely used in computer graphics due to it simplicity and because it uses integer arithmetics, making it computationally cheap.
+Then, the cells that form a straigh line between the cell of laser position and the cells of each laser measure, should be marked as empty. To get the list of these cells Bresenham's algorithm is used. This algorithm is widely used in computer graphics due to it simplicity and because it uses integer arithmetics, making it computationally cheap. The input of this algorithm is a pair of coordinates, the endpoints of the line, and as result, the set of points that completes the line between, is returned.
+%\todo{Check bresenham algorithm reference}
 
-The input of this algorithm is a pair of coordinates, the endpoints of the line, and as result, the set of points that completes the line between, is returned.
+As the output, this block generates an occupancy grid of the scene, which is published at a rate defined by the previous period $T_{om}$.
+%\todo{update policy}
 
-Now, the update procedure for the probability in each cell is described for the function $f$:
-
-\todo{update policy}
-
-\item[occgrid\_merge] \hfill
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/occgrid_merge.pdf}
-\caption{occgrid\_merge}
-\label{occgrid_merge}
-\end{figure}
 
 \item[camera\_blobs] \hfill
 
@@ -316,6 +306,8 @@ Now, the update procedure for the probability in each cell is described for the 
 \label{camera_blobs}
 \end{figure}
 
+The purpose of this block is to detect the vehicles from the streaming of video from a camera. To accomplish this task, the YOLOv3 detection system \cite{yolov3} was wraped into a block. The algorithm used by this detector, applies a single neural network to the full image. This network divides the image into regions and predicts bounding boxes and probabilities for each region. These bounding boxes are weighted by the predicted probabilities. The output of this block, are the bounding boxes with high probabilty of being a vehicle.
+
 \item[camera\_blobs2occgrid] \hfill
 
 \begin{figure}[ht!]
@@ -324,6 +316,8 @@ Now, the update procedure for the probability in each cell is described for the 
 \caption{camera\_blobs2occgrid}
 \label{camera_blobs2occgrid}
 \end{figure}
+
+This block receives bounding boxes corresponding to vehicles and transform them from image coordinate system to the global reference system, Then, it maps the area covered by the boxes into an occupancuy grid in order to mark those cells as occupied in the same fashion as described for the block "points\_to\_occgrid" \ref{points_to_grid}.
 
 \end{description}
 
@@ -340,13 +334,13 @@ Now, the update procedure for the probability in each cell is described for the 
 \end{figure}
 
 
-\item[clusters\_to\_occupancy\_level] \hfill
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/clusters2occlvl.pdf}
-\caption{clusters\_to\_occupancy\_level}
-\label{clusters_to_occupancy_level}
-\end{figure}
+%\item[clusters\_to\_occupancy\_level] \hfill
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/clusters2occlvl.pdf}
+%\caption{clusters\_to\_occupancy\_level}
+%\label{clusters_to_occupancy_level}
+%\end{figure}
 
 
 \item[occgrid\_vehicle\_counter] \hfill
@@ -358,13 +352,13 @@ Now, the update procedure for the probability in each cell is described for the 
 \label{occgrid_vehicle_counter}
 \end{figure}
 
-\item[occgrid\_to\_occupancy\_level] \hfill
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/occgrid2occlvl.pdf}
-\caption{occgrid\_to\_occupancy\_level}
-\label{occgrid_to_occupancy_level}
-\end{figure}
+%\item[occgrid\_to\_occupancy\_level] \hfill
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/occgrid2occlvl.pdf}
+%\caption{occgrid\_to\_occupancy\_level}
+%\label{occgrid_to_occupancy_level}
+%\end{figure}
 
 \end{description}
 
@@ -378,14 +372,14 @@ Now, the update procedure for the probability in each cell is described for the 
 \caption{vehicle\_counter\_merge}
 \label{vehicle_counter_merge}
 \end{figure}
-
-\item[occupancy\_level\_merge] \hfill
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/occlvl_merge.pdf}
-\caption{occupancy\_level\_merge}
-\label{occupancy_level_merge}
-\end{figure}
+%
+%\item[occupancy\_level\_merge] \hfill
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/occlvl_merge.pdf}
+%\caption{occupancy\_level\_merge}
+%\label{occupancy_level_merge}
+%\end{figure}
 
 \end{description}
 
@@ -396,25 +390,28 @@ Now, the update procedure for the probability in each cell is described for the 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=1]{fig/3/laser_publisher.pdf}
-\caption{laser\_publisher}
-\label{laser_publisher}
-\end{figure}
-
-\item[camera\_publisher] \hfill
-\begin{figure}[ht!]
-\centering
 \includegraphics[scale=1]{fig/3/camera_publisher.pdf}
-\caption{camera\_publisher}
-\label{camera_publisher}
+\caption{laser\_publisher and camera\_publisher}
+\label{sensors_publishers}
 \end{figure}
 
-\item[dataset\_control] \hfill
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/dataset_ctrl.pdf}
-\caption{dataset\_control}
-\label{dataset_control}
-\end{figure}
+These blocks are intended to read dataset files containing the information from the sensors and publish this data with the appropriate format and preserving the original rate of the sensors, if needed.
+
+%\item[camera\_publisher] \hfill
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/camera_publisher.pdf}
+%\caption{camera\_publisher}
+%\label{camera_publisher}
+%\end{figure}
+
+%\item[dataset\_control] \hfill
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/dataset_ctrl.pdf}
+%\caption{dataset\_control}
+%\label{dataset_control}
+%\end{figure}
 
 \item[data\_viewer] \hfill
 \begin{figure}[ht!]
@@ -423,6 +420,8 @@ Now, the update procedure for the probability in each cell is described for the 
 \caption{data\_viewer}
 \label{data_viewer}
 \end{figure}
+
+The objective of this block is to allow the visualisation of the data in any of the processing stages. It has the option to display and XY coordinate system, an occupancy grid or a map of the intersection overlaped with detections of metrics.
 
 \end{description}
 
