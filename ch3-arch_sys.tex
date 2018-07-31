@@ -308,6 +308,7 @@ As the output, this block generates an occupancy grid of the scene, which is pub
 
 The purpose of this block is to detect the vehicles from the streaming of video from a camera. To accomplish this task, the YOLOv3 detection system \cite{yolov3} was wraped into a block. The algorithm used by this detector, applies a single neural network to the full image. This network divides the image into regions and predicts bounding boxes and probabilities for each region. These bounding boxes are weighted by the predicted probabilities. The output of this block, are the bounding boxes with high probabilty of being a vehicle.
 
+
 \item[camera\_blobs2occgrid] \hfill
 
 \begin{figure}[ht!]
@@ -324,14 +325,20 @@ This block receives bounding boxes corresponding to vehicles and transform them 
 \subsubsection{Pattern Recognition}
 \begin{description}
 
-\item[clusters\_vehicle\_counter] \hfill
+\item[vehicle\_counter] \hfill
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=1]{fig/3/clusters_veh_counter.pdf}
-\caption{clusters\_vehicle\_counter}
-\label{clusters_vehicle_counter}
+\caption{Vehicle\_counter}
+\label{vehicle_counter}
 \end{figure}
+
+\todo{CHANGE FIGURE}
+
+This block accepts different types of inputs, cluster\_msg and occgrid\_msg. It process the incoming data, and generate bounding boxes based on the clusters or based on the occupancy grid, according to the input. Having these bounding boxes, which represent detected vehicles, scene configuration data is loaded and the geometric parameters of the legs and lanes are used to generate virtual sensors at the entry and exit points of the intersection and check the overlaping of detected vehicles with aforemetioned virtual sensors.
+
+This detection is made in a frame basis, meaning that if the overlaping area of a virtual sensor is greater than a threshold $ov_{th}$, it is considered that there is a vehicle over the sensor in that frame. Thus, the vehicle counter $v_{cnt}$ is incremented by one when a transition from occupied state to empty state is detected in a new frame.
 
 
 %\item[clusters\_to\_occupancy\_level] \hfill
@@ -343,14 +350,14 @@ This block receives bounding boxes corresponding to vehicles and transform them 
 %\end{figure}
 
 
-\item[occgrid\_vehicle\_counter] \hfill
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=1]{fig/3/occgrid_veh_counter.pdf}
-\caption{occgrid\_vehicle\_counter}
-\label{occgrid_vehicle_counter}
-\end{figure}
+%\item[occgrid\_vehicle\_counter] \hfill
+%
+%\begin{figure}[ht!]
+%\centering
+%\includegraphics[scale=1]{fig/3/occgrid_veh_counter.pdf}
+%\caption{occgrid\_vehicle\_counter}
+%\label{occgrid_vehicle_counter}
+%\end{figure}
 
 %\item[occgrid\_to\_occupancy\_level] \hfill
 %\begin{figure}[ht!]
@@ -426,3 +433,7 @@ The objective of this block is to allow the visualisation of the data in any of 
 \end{description}
 
 \subsection{Conclusions}
+
+A whole intersection management system contains many different components, for example the instrumentation of the junction, the handling of data and information, the control policies and requirements, and the interaction between those elements. None of these items is more relevant than the others and it is for this reason that each one of them should be well conceived having in mind a common framework that allows their scalability, modularity and reliability. When these three features are accomplished, a change or an upgrade of any part of the system will not affect the remaining ones.
+
+It is also important that an Intersection Management System should be flexible, not tied to one deployment or scenario, but also that allows to perform tests over new datasets or junctions, at no extra cost or just with some configuration adjustments. Although it is hard to have a one-rules-them-all system due to the variety of intersections (crossroads with different numbers of legs, roundabouts, T-shaped, Y-shaped, etc.), there are common needs, features and requirements that makes relevant to use an interesection management system looking forward to monitor, control and improve safety and efficiency in transportation.

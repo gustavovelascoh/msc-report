@@ -1,9 +1,32 @@
 \chapter [Deployment and Results]{Deployment and Results}
 
+\epigraph{"Testing leads to failure, and failure leads to understanding"}{Burt Rutan}
+
+In this chapter is presented the experimental setup used to deploy and test the proposed architecture. First is described the data and hardware and software specifications. Then, the two implemented configurations of the system are presented and finally, results are summarized and analysed.
+
 \section{Experimental Setup}
 
-The selected dataset for testing the system is the one from POSSi project (section \ref{possi_ds}). It contains 6 laser-scanners raw readings and a video from a camera located over the intersection. The ground truth data used for validation is the vehicle count over 3 of the 5 legs of the intersection, taking into account the time at which a vehicle appears. This groundtruth data was generated manually.
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.8]{fig/4/intersection-config2.pdf}
+\caption{Possi dataset configuration}
+\label{possi_img}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.2]{fig/4/sensors_overview.jpeg}
+\caption{Overview of sensors data. Left: Laser scanners, Right: Camera.}
+\label{possi_sensors}
+\end{figure}
+
+%\subsection{Data}
+The selected dataset for testing the system is the one from POSSi project (section \ref{possi_ds}). It contains 6 laser-scanners raw readings and a video from a camera located over the intersection. Figure \ref{possi_img} depicts the configuration used by this dataset. In figure \ref{possi_sensors} is shown the data from each type of sensors, laser scanners and camera. The ground truth data used for validation is the vehicle count over 3 of the 5 legs of the intersection, taking into account the time at which a vehicle appears. This groundtruth data was generated manually.
+
  
+%\subsection{Hardware and software specifications}
+
+The platform used for the implementation is a laptop ASUS GL552VW, with 8GB RAM DDR4, a processor Intel Core i7 6700HQ @ 2.60GHz x 8 cores and graphic card Nvidia GeForce GTX 960M. The operating systems running on it is Ubuntu 16.04 LTS. The software was developed using primarily Python3 and C++ as programming languages. Used libraries are MatplotLib, Scikit, Numpy, OpenCV, and darknet for data processing and visualisation. For communication scheme redis was installed along some JSON parsers for formatting.
 
 \section{Test Configurations}
 In order to test the proposed architecture, two different configurations have been selected. The first configuration is using just the camera information. The second configuration is based on multiple laser sensors along with the camera.
@@ -73,7 +96,7 @@ R & camera\_blobs2occgrid \\
 TODO
 
 
-\subsection{Case 2: Multiple Lasers}
+\subsection{Case 2: Camera and Multiple Lasers}
 
 \begin{figure}[ht!]
 \centering
@@ -95,6 +118,30 @@ TODO
 
 TODO
 
-\subsection{Results and Comparison}
+\section{Results}
 
-TODO
+\subsection{Case 1: Single camera}
+
+Detection results in three diferent frames are shown in figure \ref{camera_detection}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.115]{fig/4/camera.jpeg}
+\caption{Vehicle detection using camera}
+\label{camera_detection}
+\end{figure}
+
+\subsection{Case 2: Camera and multple lasers}
+
+Vehicle detection based on laser scanners is shown in figure \ref{laser_detection}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.43]{fig/4/laser1.png}
+\caption{Vehicle detection using laser scanners}
+\label{laser_detection}
+\end{figure}
+
+\section{Conclusions}
+
+
