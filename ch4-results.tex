@@ -29,60 +29,59 @@ The selected dataset for testing the system is the one from POSSi project (secti
 The platform used for the implementation is a laptop ASUS GL552VW, with 8GB RAM DDR4, a processor Intel Core i7 6700HQ @ 2.60GHz x 8 cores and graphic card Nvidia GeForce GTX 960M. The operating systems running on it is Ubuntu 16.04 LTS. The software was developed using primarily Python3 and C++ as programming languages. Used libraries are MatplotLib, Scikit, Numpy, OpenCV, and darknet for data processing and visualisation. For communication scheme redis was installed along some JSON parsers for formatting.
 
 \section{Test Configurations}
-In order to test the proposed architecture, two different configurations have been selected. The first configuration is using just the camera information. The second configuration is based on multiple laser sensors along with the camera.
-
-Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, vehicle counting is the metric used for evaluation.
-
-The following table lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element.
 
 \begin{table}[ht!]
 \footnotesize
 \centering
 \begin{tabular}{|c | c| c|}
 \hline
-\textbf{Block ID} & \textbf{Name} \\
+\textbf{Proc. Stage} & \textbf{Block ID} & \textbf{Name} \\
 \hline
-A & laser\_publisher \\
+
+\multirow{2}{*}{Data feeding} &
+A & camera\_publisher \\
+\cline{2-3} 
+& B & laser\_publisher \\
 \hline
-B & laser\_bg\_remover \\
+
+\multirow{3}{*}{Preprocessing} &
+C & laser\_bg\_remover \\
+\cline{2-3}
+& D & laser\_pol2cart \\
+\cline{2-3}
+& E & laser\_cart\_merge \\
 \hline
-C & laser\_pol2cart \\
+
+\multirow{4}{*}{Feature analysis} &
+F & points2clusters \\
+\cline{2-3}
+& G & points2occgrid \\
+\cline{2-3}
+& H & camera\_blobs \\
+\cline{2-3}
+& I & camera\_blobs2occgrid \\
 \hline
-D & laser\_cart\_merge \\
+
+\multirow{2}{*}{Pattern recognition} &
+J & virtual\_sensor\_occupancy \\
+\cline{2-3}
+& K & virtual\_sensor\_merge \\
 \hline
-E & points2clusters \\
+
+Situation Assesment &
+L & virtual\_sensor\_to\_flow\_status \\
 \hline
-F & clusters\_veh\_counter \\
-\hline
-G & veh\_counter\_merge \\
-\hline
-H & clusters2occ\_level \\
-\hline
-I & occ\_level\_merge \\
-\hline
-J & laser\_pol2cart \\
-\hline
-K & points2occgrid \\
-\hline
-L & occgrid\_merge \\
-\hline
-M & occgrid\_leg\_counter \\
-\hline
-N & occgrid2occ\_level \\
-\hline
-O & camera\_publisher \\
-\hline
-P & camera\_bg\_remover \\
-\hline
-Q & camera\_blobs \\
-\hline
-R & camera\_blobs2occgrid \\
-\hline
+
 \end{tabular}
 \caption{Description of processing blocks used in test configurations}
 \label{desc_test_config}
 \end{table}
 
+In order to test the proposed architecture, two different configurations have been selected. The first configuration is using just the camera information. The second configuration is based on multiple laser sensors along with the camera.
+
+Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, vehicle counting is the metric used for evaluation.
+
+The following table lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element.
 
 \subsection{Case 1: Single Camera}
 
