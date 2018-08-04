@@ -79,32 +79,25 @@ L & virtual\_sensor\_to\_flow\_status \\
 
 In order to test the proposed architecture, two different configurations have been selected. The first configuration is using just the camera information. The second configuration is based on multiple laser sensors along with the camera.
 
-Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, vehicle counting is the metric used for evaluation.
+Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, the binary status of a leg (traffic flow, no traffic flow) is the metric used for evaluation, derived from the vehicle count.
 
-The following table lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element.
-
-\subsection{Case 1: Single Camera}
+The following table lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element. The figure \ref{tconf1} shows the  configuration used for processing just video data. Figure \ref{tconf2} shows the configuration when a set of lasers is added to the single-camera configuration.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{fig/4/test_configuration1.pdf}
-\caption{Single laser configuration}
+\caption{Single camera configuration}
 \label{tconf1}
 \end{figure}
-
-TODO
-
-
-\subsection{Case 2: Camera and Multiple Lasers}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.7]{fig/4/test_configuration2.pdf}
-\caption{Multiple lasers configuration}
+\caption{Multiple lasers and camera configuration}
 \label{tconf2}
 \end{figure}
 
-TODO
+%TODO
 
 %\subsection{Case 3: Multiple Lasers and camera}
 %
@@ -115,11 +108,13 @@ TODO
 %\label{tconf3}
 %\end{figure}
 
-TODO
+%TODO
 
 \section{Results}
 
 \subsection{Case 1: Single camera}
+
+As stated before, the flow status is used for comparing the system with the ground truth. This status is derived from the flow rate in vehicles per second. If this value is over a threshold, it is considerded to be in "traffic flow" status.
 
 Detection results in three diferent frames are shown in figure \ref{camera_detection}.
 
@@ -130,7 +125,7 @@ Detection results in three diferent frames are shown in figure \ref{camera_detec
 \label{camera_detection}
 \end{figure}
 
-\subsection{Case 2: Camera and multple lasers}
+\subsection{Case 2: Camera and multiple lasers}
 
 Vehicle detection based on laser scanners is shown in figure \ref{laser_detection}.
 
