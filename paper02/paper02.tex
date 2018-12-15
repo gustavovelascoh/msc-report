@@ -81,7 +81,7 @@ Intersection monitoring is a required task to be done within intelligent transpo
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.19]{../fig/2/ims_graph5.png}
+\includegraphics[scale=0.17]{../fig/2/ims_graph5.png}
 \caption{Components of an Intersection Management System application.}
 \label{imsComps}
 \end{figure}
@@ -110,20 +110,20 @@ Not all IMS applications are implementable on a real scenario, maybe because is 
 
 \subsection{Developments in Intersection Management Systems}
 
-In the table \ref{reviewtable} is presented a compilation of several developments within IMS field from the last 20 years. For each work a description is given in which target and implementation components are highlighted. Additionally, Data source, communication and application components are detailed in their own column. 
+In the table \ref{reviewtable} is presented a compilation of several developments within IMS field from the last 10 years. For each work a description is given in which target and implementation components are highlighted. Additionally, Data source, communication and application components are detailed in their own column. 
 
 %\clearpage 
 %\onecolumn
 
 % IMS review table
 %\begin{center}
-\footnotesize
+
 %\begin{supertabular} {|c|p{0.3\linewidth}|p{0.15\linewidth}|p{0.1\linewidth}|c|}
 %\begin{longtable} {|c|p{0.3\linewidth}|p{0.15\linewidth}|p{0.1\linewidth}|c|}
 %\begin{xtabular*}{|c|p{0.3\linewidth}|p{0.15\linewidth}|p{0.1\linewidth}|c|}
 %\begin{table}
 %\afterpage{
-\onecolumn
+%\onecolumn
 %\begin{table}
 %\onecolumn
 %\begin{xtabular*}{\textwidth}{|p{0.1\textwidth}|p{0.4\textwidth}|p{0.15\textwidth}|p{0.1\textwidth}|p{0.121875\linewidth}|}
@@ -161,14 +161,18 @@ In the table \ref{reviewtable} is presented a compilation of several development
 
 
 
-\twocolumn
+%\twocolumn
 
 
 \section{Internet of Things at Intersections}
 
-Given that the IoT concept is related to the whole stack of a solution, which include hardware, communication, infrastructure and visualization, the benefits that it can provide to IMS is great. For this reason, in the recent years IMS applications have been increasing their scope, including almost all of the components described in the previous section.
+Given that the IoT concept is related to the whole stack of a solution, which include hardware, communication, infrastructure and visualization, the benefits that it can provide to IMS implementations is great. For this reason, in the recent years IMS applications have been increasing their scope, including almost all of the components described in the previous section, and not just one or two. This means that IoT improvements affect each of the components making them more modular, scalable and integrable.
 
-For example, with the reduced cost of making new sensors, it has been possible to deploy more prototypes rather than work in simulated scenarios. Or instead of make architecture proposal of intersection management systems, current IoT infrastructure and platform are ready to deploy such proposed architectures. This can be seen in table |\ref{iotrev}, where a description of  IoT-based developments are summarized.
+Starting with the data source component, IoT-based sensors allow new kind of data to be integrated into the process flow of the system. For example, data from sensors intended for other fields like pollution monitoring or weather conditions could be used to improve or evaluate traffic conditions. In the same way, an IMS application could be designed from the beginning to not just a transportation scope but also to be oriented to social or enviromental issues.
+
+In this way, the target component now includes the live users of the road (vehicles, pedestrians) but also all those which are indirectly interested, for example prospective travelers, authorities, and the public in general. And due to the new variety of communication possibilities that different IoT protocols offer, the integration of an IMS with other systems is more straightforward, making the data available to a new group of stakeholders.
+
+In the implementation component, with the reduced cost of making new sensors, it has been possible to deploy more prototypes rather than work in simulated scenarios. Or instead of make architecture proposal of intersection management systems, current IoT infrastructure and platform are ready to deploy such proposed architectures. In table \ref{iotrev} some IoT-based developments are summarized, where their application in an IMS and their implementation approach are decribed.
 
 
 \begin{table}[tp]
