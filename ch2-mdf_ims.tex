@@ -50,7 +50,7 @@ Harris and Markin in \cite{Harris1998} and CITE, proposed a model named Waterfal
 
 \subsubsection{JDL fusion model}
 
-One of the first proposals of fusion architecture, and probably one of the most widely used, is the JDL fusion model, originated from the US Joint Directors of Laboratories and described by Hall and Llinas in \cite{Hall1997} and \cite{Llinas1998}. The JDL fusion model was conceived to aid the developments of military applications and comprises 5 levels of data processing at which data fusion could be done. These levels and a database are connected by a bus (\ref{JDLmodel}), and are not meant to be execute sequentially and can also be executed concurrently. 
+One of the first proposals of fusion architecture, and probably one of the most widely used, is the JDL fusion model, originated from the US Joint Directors of Laboratories and described by Hall and Llinas in \cite{Hall1997} and \cite{Llinas1998}. The JDL fusion model was conceived to aid the developments of military applications and comprises 5 levels of data processing at which data fusion could be done. These levels and a database are connected by a bus (\ref{JDLmodel}), and are not meant to be execute sequentially, and can also be executed concurrently. 
 
 \begin{figure}[ht!]
 \centering
@@ -59,9 +59,10 @@ One of the first proposals of fusion architecture, and probably one of the most 
 \label{JDLmodel}
 \end{figure}
 
-\todo{Describe level 4 and highlight levels}
+%DONE\todo{Describe level 4 and highlight levels}
 
-The first stage, referred as level-0 is the source preprocessing in which raw data is handled to concentrate the more pertinent data for the current situation. The level-1 is for object refinement, starting with the alignment of the data in a commonly space-time reference frame. Then, performs identification and tracking of objects using different techniques. Situation refinement is at level-2, which takes observed and partially-observed object from level-1 and tries to find a contextual description between them. Level-3, threat refinement, is the level in which results from level-2 are interpreted looking for possible advantages and disadvantages for the system to operate, based on previous knowledge and predictions about executing an action.
+The first stage, referred as \textbf{\textit{level-0}} is the source preprocessing in which raw data is handled to concentrate the more pertinent data for the current situation. The \textbf{\textit{level-1}} is for object refinement, starting with the alignment of the data in a commonly space-time reference frame. Then, performs identification and tracking of objects using different techniques. Situation refinement is at \textbf{\textit{level-2}}, which takes observed and partially-observed object from level-1 and tries to find a contextual description between them. \textbf{\textit{Level-3}}, threat refinement, is the level in which results from level-2 are interpreted looking for possible advantages and disadvantages for the system to operate, based on previous knowledge and predictions about executing an action. \textbf{\textit{Level-4}} is in the border of the whole diagram because its tasks are not just about sensor fusion but also on resource management. This level monitors the overall
+data fusion process to assess and improve real-time system performance and allocate sensors and sources to collect relevant information for the process.
 
 \subsubsection{Multisensor Fusion Integration model}
 
@@ -88,7 +89,8 @@ Also, they made a clear distinction between multisensor fusion and multisensor i
 \subsection{Classification of Data Fusion Architectures}
 
 \todo{Highlight architectures types}
-Elmenreich in \cite{Elmenreich2007} classify fusion models in three categories: Abstract models, generic architectures and rigid architectures. Abstract model are not intended to show how to implement a sensor fusion system, but to explain which processes are done in it. Generic architectures gives an outline on how a system could be implemented in an application, but do not specify what type of hardware, database or communication system could be used. Finally, rigid architectures, are a good guide for implementation  of data fusion in certain applications, at the cost that several design decisions have been already taken, making expensive the migration to another architecture. 
+
+Elmenreich in \cite{Elmenreich2007} classify fusion models in three categories: Abstract models, generic architectures and rigid architectures. \textbf{\textit{Abstract models}} are not intended to show how to implement a sensor fusion system, but to explain which processes are done in it. \textbf{\textit{Generic architectures}} gives an outline on how a system could be implemented in an application, but do not specify what type of hardware, database or communication system could be used. Finally, \textbf{\textit{Rigid architectures}}, are a good guide for implementation  of data fusion in certain applications, at the cost that several design decisions have been already taken, making expensive the migration to another architecture. 
 
 In addition to models previously mentioned, there exists more proposal for data fusion architectures in literature, as can be viewed in table \ref{fusionModelsClas}.
 
@@ -101,7 +103,7 @@ In addition to models previously mentioned, there exists more proposal for data 
 %\end{figure}
 
 
-\begin{table}
+\begin{table}[ht!]
 \footnotesize
 \centering
 \begin{tabular}{|c | c|}
