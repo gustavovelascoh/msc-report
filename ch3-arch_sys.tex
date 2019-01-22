@@ -96,7 +96,7 @@ Taking these reasons into account, Redis is chosen as communication platform. As
 
 For publishers and subscribers to exchange messages, channels are defined with labels using a namespace approach that describe the source of data and the kind of data. For example a channel containing raw data from a laser scanner could be labeled as \texttt{/sensors/range/laser\_1/data/raw}.
 
-Redis is also used as in-memory storage for configuration data that is not part of the processing flow, like sensor parameters, intersection model and control options. This information is loaded into Redis from a JSON file and it is available for any client requiring it.
+Redis is also used as in-memory storage for configuration data that is not part of the processing flow, like sensor parameters, intersection model and control options. This information is loaded into Redis from a configuration file formatted using JavaScript Object Notation (JSON), available for any client requiring it.
 \todo{Define JSON HERE!!!!}
 
 \subsection{Data Model}
@@ -119,7 +119,7 @@ The purpose of all the labels attributes within each class is to serve as an ide
 \subsection{Information Structure}
 
 \todo{Move JSON definition from here!!!}
-Data exchanged between processing blocks or any paramater stored in Redis, is formatted using JavaScript Object Notation (JSON), allowing to use any JSON parser/formatter available in many languages, even it is possible to create simple scripts to interact with the system.
+Data exchanged between processing blocks or any paramater stored in Redis, is formatted using JSON, allowing to use any JSON parser/formatter available in many languages, even it is possible to create simple scripts to interact with the system.
 
 \subsubsection{.imscfg file}
 
