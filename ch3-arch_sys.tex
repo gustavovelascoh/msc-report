@@ -23,7 +23,7 @@ Multicamera and multilasers monitoring systems offer more information about envi
 
 \subsection{Processing Stages}
 
-\todo{Check stages description and figure}
+%\todo{Check stages description and figure}
 
 In the designing of an IMS, there are four main stages that have to be performed from the data source to final output: preprocessing, feature analysis, pattern recognition and situation assessment. The aim of the first stage is to extract data of interest from the raw sensor information, using filtering to remove noise and irrelevant data, and background subtraction techniques to get the foreground of the scene. Spatial-temporal alignment of data is also performed in this stage. In the second stage, the objective is to identify elements within the foreground and extract relevant features of them. The third stage receives the set of features from the previous stage and performs recognition and classification tasks. Also, tracking and prediction of objects' state is performed based on historic information. In the fourth stage, object behaviour and inter-objects interaction are analysed to identify context and detect situations or events of interest. This output could be delivered to an automated or semi-automated stage of decision and control, to a human operator, or to a traffic agent or institution, to take immediate actions on traffic control, issue traffic tickets, warn drivers about possible incidents or improve transportation policies in a long-term basis. In figure \ref{proc_stages}, previously described stages are depicted, including a list of common tasks performed at each of these stages.
 
@@ -49,7 +49,7 @@ Transportation is a highly complex activity where different elements, like infra
 
 Three widely-known models for this kind of analysis are macroscopic model, microscopic model and mesoscopic model. The macroscopic model of traffic flow is based on a hydrodynamic analogy, modeling traffic as a fluid process characterized by three main variables, density, volume and speed, and the objective is to describe time-space evolution of those variables. The microscopic model aims to detail at a high detail inter-vehicles interactions and their individual state. For example, in a lane-change maneuver the state of the car doing the action and those affected by it, is individually tracked. The mesoscopic model tries to include features of both macroscopic and mesoscopic model. In this case, the same lane-change maneuver could be seen as an instant action triggered by lane density rather than on individual interactions.
 
-\todo{Simulators description (?)}
+%\todo{Simulators description (?)}
 
 A more detailed analysis of traffic simulation models and simulation platforms could be found in \cite{AdamsBoxill2000, Barcelo2000, Kitamura2005, Lieberman1992}
 
@@ -97,7 +97,8 @@ Taking these reasons into account, Redis is chosen as communication platform. As
 For publishers and subscribers to exchange messages, channels are defined with labels using a namespace approach that describe the source of data and the kind of data. For example a channel containing raw data from a laser scanner could be labeled as \texttt{/sensors/range/laser\_1/data/raw}.
 
 Redis is also used as in-memory storage for configuration data that is not part of the processing flow, like sensor parameters, intersection model and control options. This information is loaded into Redis from a configuration file formatted using JavaScript Object Notation (JSON), and once loaded in Redis, it is available for any client requiring it.
-\todo{Define JSON HERE!!!!}
+
+%\todo{Define JSON HERE!!!!}
 
 \subsection{Data Model}
 
@@ -118,7 +119,8 @@ The purpose of all the labels attributes within each class is to serve as an ide
 
 \subsection{Information Structure}
 
-\todo{Move JSON definition from here!!!}
+%\todo{Move JSON definition from here!!!}
+
 Data exchanged between processing blocks or any paramater stored in Redis, is formatted using JSON, allowing to use any JSON parser/formatter available in different languages. In addition,  it is possible to create simple scripts to interact with the system. Below are described the two types of data used by the systems: the .imscfg file and the messages and configuration parameters.
 
 \subsubsection{.imscfg file}
