@@ -203,7 +203,7 @@ In this test case, the information from the laser scanners is used with the purp
 
 For merging information from laser and cameras, it was decided to perform the fusion at two levels, at the virtual sensor occupancy level and at the flow rate level. Both of these approaches were implemented using average and maximum policies. In the figure \ref{vl_res} is depicted the flow rate output for all of four configurations.
 
-Performing the same frame-based analysis as for the video system, we obtain the confusion matrices presented in table \ref{vl_cf}. It is noted that performing the fusion at virtual sensor occupancy level, the accuracy of the systems has almost no change, 92.2\% and 91.48\% for average and maximum policies respectively. For the TPR, there is a significative increase, having 88.12\% and 63.56\%, also for average and maximum policies.
+Performing the same frame-based analysis as for the video system, we obtain the confusion matrices presented in figure \ref{vl_cf}. It is noted that performing the fusion at virtual sensor occupancy level, the accuracy of the systems has almost no change, 92.2\% and 91.48\% for average and maximum policies respectively. For the TPR, there is a significative increase, having 88.12\% and 63.56\%, also for average and maximum policies.
 
 When the fusion is performed at flow rate level using average policy, the accuracy and TPR values are reduced to 84.45\% and 12.92\%. Using maximum policy, there is a small decrement in the values, with an accuracy of 89.76\% and a TPR of 57.46\%.
 
@@ -217,59 +217,75 @@ When the fusion is performed at flow rate level using average policy, the accura
 \begin{figure}[htb!]
 \centering
 \includegraphics[scale=0.4]{fig/4/conf_mat.jpeg}
-\caption{Results for the multisensor implementation using four different fusion approaches}
-\label{vl_res}
+\caption{Fusion configurations: top-left, Average on virtual sensor occupancy. Bottom-left, Maximum on virtual sensor occupancy. Top-right, Average on flow rate. Bottom-rigth, Maximum on flow rate}
+\label{vl_cf}
 \end{figure}
 
-\begin{table}[htb!]
-\footnotesize
-\centering
-\noindent
-\renewcommand\arraystretch{1.5}
-\setlength\tabcolsep{0pt}
-\begin{tabular}{c c c c c}
-  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
-     \multicolumn{4}{c}{\bfseries Outcome (avg vs\_occ)} \\
-  & & \bfseries F & \bfseries S & \bfseries total \\
-  & F$'$ & \MyBox{1098}{} & \MyBox{148}{} & 1246 \\[2.4em]
-  & S$'$ & \MyBox{403}{} & \MyBox{5414}{} & 5817 \\
-  & total & 1501 & 5562 &
-\end{tabular}
-
-\begin{tabular}{c c c c c}
-  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
-     \multicolumn{4}{c}{\bfseries Outcome (max vs\_occ)}  \\
-  & & \bfseries F & \bfseries S & \bfseries total \\
-  & F$'$ & \MyBox{792}{} & \MyBox{454}{} & 1246 \\[2.4em]
-  & S$'$ & \MyBox{148}{} & \MyBox{5669}{} & 5817 \\
-  & total & 940 & 6123 &
-\end{tabular}
-
-\begin{tabular}{c c c c c}
-  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
-     \multicolumn{4}{c}{\bfseries Outcome (avg flow)} \\
-  & & \bfseries F & \bfseries S & \bfseries total \\
-  & F$'$ & \MyBox{161}{} & \MyBox{1085}{} & 1246 \\[2.4em]
-  & S$'$ & \MyBox{13}{} & \MyBox{5804}{} & 5817 \\
-  & total & 174 & 6889 &
-\end{tabular}
-
-\begin{tabular}{c c c c c}
-  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
-     \multicolumn{4}{c}{\bfseries Outcome (max flow)}  \\
-  & & \bfseries F & \bfseries S & \bfseries total \\
-  & F$'$ & \MyBox{716}{} & \MyBox{530}{} & 1246 \\[2.4em]
-  & S$'$ & \MyBox{193}{} & \MyBox{5624}{} & 5817 \\
-  & total & 909 & 6154 &
-\end{tabular}
-
-\caption{Fusion configurations from top to bottom: Average on virtual sensor occupancy, Maximum on virtual sensor occupancy, Average on flow rate, Maximum on flow rate}
-\label{vl_cf}
-\end{table}
+%\begin{table}[htb!]
+%\footnotesize
+%\centering
+%\noindent
+%\renewcommand\arraystretch{1.5}
+%\setlength\tabcolsep{0pt}
+%\begin{tabular}{c c c c c}
+%  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
+%     \multicolumn{4}{c}{\bfseries Outcome (avg vs\_occ)} \\
+%  & & \bfseries F & \bfseries S & \bfseries total \\
+%  & F$'$ & \MyBox{1098}{} & \MyBox{148}{} & 1246 \\[2.4em]
+%  & S$'$ & \MyBox{403}{} & \MyBox{5414}{} & 5817 \\
+%  & total & 1501 & 5562 &
+%\end{tabular}
+%
+%\begin{tabular}{c c c c c}
+%  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
+%     \multicolumn{4}{c}{\bfseries Outcome (max vs\_occ)}  \\
+%  & & \bfseries F & \bfseries S & \bfseries total \\
+%  & F$'$ & \MyBox{792}{} & \MyBox{454}{} & 1246 \\[2.4em]
+%  & S$'$ & \MyBox{148}{} & \MyBox{5669}{} & 5817 \\
+%  & total & 940 & 6123 &
+%\end{tabular}
+%
+%\begin{tabular}{c c c c c}
+%  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
+%     \multicolumn{4}{c}{\bfseries Outcome (avg flow)} \\
+%  & & \bfseries F & \bfseries S & \bfseries total \\
+%  & F$'$ & \MyBox{161}{} & \MyBox{1085}{} & 1246 \\[2.4em]
+%  & S$'$ & \MyBox{13}{} & \MyBox{5804}{} & 5817 \\
+%  & total & 174 & 6889 &
+%\end{tabular}
+%
+%\begin{tabular}{c c c c c}
+%  \multirow{10}{*}{\rotatebox{90}{\parbox{1.1cm}{\bfseries\centering Actual\\ value}}} & 
+%     \multicolumn{4}{c}{\bfseries Outcome (max flow)}  \\
+%  & & \bfseries F & \bfseries S & \bfseries total \\
+%  & F$'$ & \MyBox{716}{} & \MyBox{530}{} & 1246 \\[2.4em]
+%  & S$'$ & \MyBox{193}{} & \MyBox{5624}{} & 5817 \\
+%  & total & 909 & 6154 &
+%\end{tabular}
+%
+%\caption{Fusion configurations from top to bottom: Average on virtual sensor occupancy, Maximum on virtual sensor occupancy, Average on flow rate, Maximum on flow rate}
+%\label{vl_cf}
+%\end{table}
 
 \section{Conclusions}
 
 \todo{Sumarise and discuss results}
+
+\begin{table}[ht!]
+\footnotesize
+\begin{tabular}{c c c c c}
+Test Case & Sensors & Fusion Aproaches & Accuracy & TPR \\
+
+Case 1 & Camera & NA & 91.82\% & 55.7\% \\
+Case 2 & Camera + Lasers & Low-level, Mid-level (avg) & 92.2\% & 88.12\%\\
+Case 2 & Camera + Lasers & Low-level, Mid-level (max) & 91.48\% & 63.56\% \\
+Case 2 & Camera + Lasers & Low-level, High-level (avg) & 84.45\% & 12.92\% \\
+Case 2 & Camera + Lasers & Low-level, High-level (max) & 89.76\% & 57.46\%\\
+
+\end{tabular}
+\caption{Summary of results}
+\label{results}
+\end{table}
 
 An intersection management system is a complex set of subsystems, and for a feasible implementation and deployment as a real solution it is needed for it to be easily tested, adapted and enhanced. In this case, after having a well-concieved block design, it was relatively straight forward to start building a video based system for getting an indicator about traffic flow in an intersection using a dataset.
 
