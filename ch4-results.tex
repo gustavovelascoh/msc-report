@@ -86,11 +86,9 @@ L & virtual\_sensor\_to\_flow\_rate \\
 
 In order to test the proposed architecture, two different configurations have been selected. The first configuration is using just the camera information. The second configuration is based on multiple laser sensors along with the camera.
 
-Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, the binary status of a leg (traffic flowing, traffic stopped) is the metric used for evaluation, derived from the vehicle count.
+Each configuration consists of a set of processing blocks (as described in section \ref{proc_blocks}) connected, aiming to take data from  lasers and cameras, to produce an output of higher level. In this case, the binary status of a leg (traffic flowing, traffic stopped) is the output used for evaluation, derived from the vehicle count.
 
-The table \ref{desc_test_config} lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element. The figure \ref{tconf2} shows the  configuration used for processing just video data the configuration when a set of lasers is added to the previous configuration. The blue line represents the fusion at node K, which is fusion on virtual sensors level. The purple line represents the fusion at flow rate level.
-
-\todo{Explain evaluation params}
+The table \ref{desc_test_config} lists all used blocks and assigns an ID for each one. Those IDs are used in the graph description in its own section. Also, bold nodes and connections indicate multiple instance of the same element. The figure \ref{tconf2} shows the  configuration used for processing just video data the configuration when a set of lasers is added to the previous configuration. The blue line represents the fusion at node K, which is fusion on virtual sensors level (Mid-level fusion). The purple line represents the fusion at flow rate level (High-level fusion).
 
 \begin{figure}[ht!]
 %\centering
@@ -115,6 +113,7 @@ The table \ref{desc_test_config} lists all used blocks and assigns an ID for eac
 \label{tconf2}
 \end{figure}
 
+As this is a binary classification system, the evaluation metrics used for these implementations, derived from the obtained confusion matrices, are Accuracy and True Positive Rate (TPR).
 %TODO
 
 %\subsection{Case 3: Multiple Lasers and camera}
@@ -166,7 +165,7 @@ In the figure \ref{video_res} is shown the comparison between the flow profile o
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.45]{fig/4/video_res.pdf}
+\includegraphics[scale=0.42]{fig/4/video_res.pdf}
 \caption{Results for the single camera implementation in one of the legs of the intersection}
 \label{video_res}
 \end{figure}
@@ -196,7 +195,7 @@ In this test case, the information from the laser scanners is used with the purp
 
 \begin{figure}[htb!]
 \centering
-\includegraphics[scale=0.4]{fig/4/laser1a.png}
+\includegraphics[scale=0.35]{fig/4/laser1a.png}
 \caption{Vehicle detection using laser scanners}
 \label{laser_detection}
 \end{figure}
@@ -205,7 +204,9 @@ For merging information from laser and cameras, it was decided to perform the fu
 
 Performing the same frame-based analysis as for the video system, we obtain the confusion matrices presented in figure \ref{vl_cf}. It is noted that performing the fusion at virtual sensor occupancy level, the accuracy of the systems has almost no change, 92.2\% and 91.48\% for average and maximum policies respectively. For the TPR, there is a significative increase, having 88.12\% and 63.56\%, also for average and maximum policies.
 
-When the fusion is performed at flow rate level using average policy, the accuracy and TPR values are reduced to 84.45\% and 12.92\%. Using maximum policy, there is a small decrement in the values, with an accuracy of 89.76\% and a TPR of 57.46\%.
+When the fusion is performed at flow rate level using average policy, the accuracy and TPR values are reduced to 84.45\% and 12.92\%. Using maximum policy, there is a small decrement in the values, with an accuracy of 89.76\% and a TPR of 57.46\%. A summary of the results obtained on both test cases is presented in table \ref{results}.
+
+% It can be seen in this table that merging laser data with video data in some cases enhance the classification task. But it should be noted that this is an unbalanced dataset, with 17.64 \% of True (Flowing traffic) instances and 82.36 \% of False (Stopped traffic),
 
 \begin{figure}[htb!]
 \centering
@@ -217,7 +218,7 @@ When the fusion is performed at flow rate level using average policy, the accura
 \begin{figure}[htb!]
 \centering
 \includegraphics[scale=0.4]{fig/4/conf_mat.jpeg}
-\caption{Fusion configurations: top-left, Average on virtual sensor occupancy. Bottom-left, Maximum on virtual sensor occupancy. Top-right, Average on flow rate. Bottom-rigth, Maximum on flow rate}
+\caption{Fusion configurations: top-left, Average on virtual sensor occupancy. Bottom-left, Maximum on virtual sensor occupancy. Top-right, Average on flow rate. Bottom-right, Maximum on flow rate}
 \label{vl_cf}
 \end{figure}
 
@@ -267,31 +268,43 @@ When the fusion is performed at flow rate level using average policy, the accura
 %\label{vl_cf}
 %\end{table}
 
-\section{Conclusions}
+%\subsection{Discussion}
 
-\todo{Sumarise and discuss results}
+%\todo{Sumarise and discuss results}
+
+ 
 
 \begin{table}[ht!]
 \footnotesize
-\begin{tabular}{c c c c c}
-Test Case & Sensors & Fusion Aproaches & Accuracy & TPR \\
+\begin{tabular}{|c| c| c| c| c|}
 
+\hline
+\textbf{Test Case} & \textbf{Sensors} & \textbf{Fusion Aproaches} & \textbf{Accuracy} & \textbf{TPR} \\
+\hline
 Case 1 & Camera & NA & 91.82\% & 55.7\% \\
+\hline
 Case 2 & Camera + Lasers & Low-level, Mid-level (avg) & 92.2\% & 88.12\%\\
+\hline
 Case 2 & Camera + Lasers & Low-level, Mid-level (max) & 91.48\% & 63.56\% \\
+\hline
 Case 2 & Camera + Lasers & Low-level, High-level (avg) & 84.45\% & 12.92\% \\
+\hline
 Case 2 & Camera + Lasers & Low-level, High-level (max) & 89.76\% & 57.46\%\\
-
+\hline
 \end{tabular}
 \caption{Summary of results}
 \label{results}
 \end{table}
 
+
+
+\section{Conclusions}
+
 An intersection management system is a complex set of subsystems, and for a feasible implementation and deployment as a real solution it is needed for it to be easily tested, adapted and enhanced. In this case, after having a well-concieved block design, it was relatively straight forward to start building a video based system for getting an indicator about traffic flow in an intersection using a dataset.
 
 For stakeholders of the system outcome, high level indicators are desired, like traffic status, no matter which low-level hardware or software are used. For this reason, modularity and definitions on data and messages types, allow development of new features without compromising the integrity of the system. Also, new sources of information and data could be easily integrated if the processing of them is made according to the definitions. In that way, it was possible to integrate laser scanner data provided by the dataset, taking into account to generate outputs already defined by the messages specification.
 
-For different sources of information it is not enough to perform a fusion strategy to obtain better results. It is needed to analyse the type of data and the level at which fusion should be performed. Also, it is important to understand if the fusion is competitive, complementary or cooperative, in order to select the appropiate strategy and increase the performance of the system. An example of this, was found when fusing data from camera and lasers at two different levels and using different strategies. It was clear from the results that altough the data was the same, one configuration increased the performace while another one decrease it.
+For different sources of information it is not enough to perform a fusion strategy to obtain better results. It is needed to analyse the type of data and the level at which fusion should be performed. Also, it is important to understand if the fusion is competitive, complementary or cooperative, in order to select the appropiate strategy and increase the performance of the system. An example of this was demonstrated when fusing data from camera and lasers at two different levels and using different strategies. It was clear from the results (table \ref{results}) that altough the data was the same, one configuration increased the performace while another one decrease it.
 
 
 
