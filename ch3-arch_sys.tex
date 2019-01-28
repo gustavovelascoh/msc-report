@@ -85,7 +85,9 @@ The proposal presented in this work is based on MFI model processing entities in
 \label{proposal_blocks}
 \end{figure} 
 
-\todo{Design Considerations}
+%\todo{Design Considerations}
+
+As the implementation of a full Intersection Management System is a joint effort among different fields of engineering (Hardware, software, IT, civl) and even non-engineering areas, The two main features chosen for this proposal are scalability and modularity. Scalability is desired in the cases where an initial deployment needs to expand or increase its complexity in any of its areas, for example, new communication approaches, add new sensors or hardware, develop new features or policies, etc. Modularity allows that the internal blocks of system could be modified, exchanged or enhanced without disturbing the overall function of the deployment. This criteria is achieved with the four proposed elements of this architecture: communication scheme, data model, information structure and processing blocks. 
 
 
 \subsection{Communication scheme}
@@ -248,7 +250,7 @@ Let suppose we have N scans from the laser and $d_{\theta i}$ be the distance me
 \label{polar_to_cartesian}
 \end{figure}
 
-This block takes as input a message of type laser\_pol\_msg for converting it into cartesian coordinates referenced to global system. For this reason, it also takes a laser\_cfg parameter to include laser position information in the conversion. Output message contains a set of x, y points obtained from the following equations:
+This block takes as input a message of type laser\_pol\_msg for converting it into cartesian coordinates referenced to global system. For this reason, it also takes a laser\_cfg parameter to include laser position information in the conversion. Output message contains a set of x, y points, referenced to a global coordinate system. This output is obtained from the following equations:
 
 \begin{eqnarray*}
 O_x = I_\rho*\cos{\phi}+S_x \\
@@ -262,7 +264,7 @@ $(S_x, S_y, S_\theta)$: Position and orientation of the laser \\
 $(I_\rho, I_\theta )$: Input message (distance and angle arrays) \\
 $(O_x, O_y )$: Output message (x and y arrays) \\
 
-
+\hfill
 \item[laser\_cart\_merge] \hfill
 
 \begin{figure}[ht!]
@@ -272,7 +274,7 @@ $(O_x, O_y )$: Output message (x and y arrays) \\
 \label{laser_cart_merge}
 \end{figure}
 
-This block takes as input messages of type laser\_cart\_msg coming from different sensors and merges them into a single message, based on a sampling period $T$.
+This block takes as input messages of type laser\_cart\_msg coming from different sensors and merges them into a single message, based on a sampling period $T$. The objective of this stage is to set a common time-frame and synchronize all the messages to feed to the next blocks.
 
 %\item[camera\_background\_remove] \hfill
 %
@@ -289,6 +291,8 @@ This block takes as input messages of type laser\_cart\_msg coming from differen
 \subsubsection{Feature Analysis}
 \begin{description}
 \item[points\_to\_cluster] \hfill
+
+The input message for this block is a set of points corresponding to objects scanned by lasers. Clustering is performed over this input to identify the points belonging to the same object. The algorithm used in this implementation is DBSCAN, which stands for Density-Based Spatial Clustering of Applications with Noise. This algorithm does not need an estimated number of clusters as input, instead of this, it requires only two parameters: a minimum number of points per cluster, m, and a neighbourhood measure, $\epsilon$. A detailed description of the algorithm, can be found in \cite{Ester96}.
 
 \begin{figure}[ht!]
 \centering
@@ -376,9 +380,10 @@ This block accepts different types of inputs, cluster\_msg and occgrid\_msg. It 
 %vehicle counter $v_{cnt}$ is incremented by one when a transition from occupied state to empty state is detected in a new frame.
 
 
-
+\hfill
 
 \item[virtual\_sensor\_merge] \hfill
+This block is intended to take as inputs different messages of type vs\_occ\_msg and merging them to increase the reliabilty of detection. First, a moving average is calculated over each input to reduce the effect of false positives or false negatives in a single frame. After this, the inputs are merged by a defined method like average, weighted average, maximum or minimum. Then, a new vs\_occ\_msg message is dispatched as output.
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=1]{fig/3/vs_merge.pdf}
@@ -386,7 +391,7 @@ This block accepts different types of inputs, cluster\_msg and occgrid\_msg. It 
 \label{virtual_sensor_merge}
 \end{figure}
 
-This block is intended to take as inputs different messages of type vs\_occ\_msg and merging them to increase the reliabilty of detection. First, a moving average is calculated over each input to reduce the effect of false positives or false negatives in a single frame. After this, the inputs are merged by a defined method like average, weighted average, maximum or minimum. Then, a new vs\_occ\_msg message is dispatched as output.
+
 
 \end{description}
 
@@ -395,6 +400,9 @@ This block is intended to take as inputs different messages of type vs\_occ\_msg
 \begin{description}
 
 \item[virtual\_sensor\_to\_flow\_rate] \hfill
+
+When a message of type vs\_occ\_msg arrives, it is evaluated using a threshold $vo_{th}$, if the occupancy percentage of a virtual sensor is greater than $vo_{th}$, it is considered that there is a vehicle over the sensor in that frame, this is defined as occupied state. This detection is made in a frame basis, thus, a vehicle counter $v_{cnt}$ is incremented by one when a transition from occupied state to empty state is detected in a new frame.
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=1]{fig/3/vs2flow.pdf}
@@ -402,11 +410,16 @@ This block is intended to take as inputs different messages of type vs\_occ\_msg
 \label{virtual_sensor_to_flow_status}
 \end{figure}
 
-When a message of type vs\_occ\_msg arrives, it is evaluated using a threshold $vo_{th}$, if the occupancy percentage of a virtual sensor is greater than $vo_{th}$, it is considered that there is a vehicle over the sensor in that frame, this is defined as occupied state. This detection is made in a frame basis, thus, a vehicle counter $v_{cnt}$ is incremented by one when a transition from occupied state to empty state is detected in a new frame.
+
 
 Then, a time interval $t_{c}$ is defined for calculating the flow rate $v_{r}$. Defined as the number of transitions during that interval divided by $t_{c}$. The output message type is flow\_rate\_msg.
 
+\hfill
+
 \item[flow\_rate\_to\_flow\_status] \hfill
+
+This block process one or more inputs of type flow\_rate\_msg. If there are more than one input, it merges them using defined policy, like average or maximum. Then, if the flow rate $v_{r}$ is above a flow threshold $f_{th}$, it is considered that the traffic is flowing. Otherwise, traffic is considered stopped.
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=1]{fig/3/flow2status.pdf}
@@ -415,7 +428,7 @@ Then, a time interval $t_{c}$ is defined for calculating the flow rate $v_{r}$. 
 \end{figure}
 
 
-This block process one or more inputs of type flow\_rate\_msg. If there are more than one input, it merges them using defined policy, like average or maximum. Then, if the flow rate $v_{r}$ is above a flow threshold $f_{th}$, it is considered that the traffic is flowing. Otherwise, traffic is considered stopped.
+
 
 \end{description}
 \todo{Check formatting here}
@@ -423,6 +436,9 @@ This block process one or more inputs of type flow\_rate\_msg. If there are more
 \begin{description}
 
 \item[laser\_publisher] \hfill
+
+These blocks are intended to read dataset files containing the information from the sensors and publish this data with the appropriate format and preserving the original rate of the sensors, if needed.
+
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=1]{fig/3/laser_publisher.pdf}
@@ -431,7 +447,7 @@ This block process one or more inputs of type flow\_rate\_msg. If there are more
 \label{sensors_publishers}
 \end{figure}
 
-These blocks are intended to read dataset files containing the information from the sensors and publish this data with the appropriate format and preserving the original rate of the sensors, if needed.
+
 
 %\item[camera\_publisher] \hfill
 %\begin{figure}[ht!]
