@@ -253,6 +253,25 @@ In the implementation component, with the reduced cost of making new sensors, it
 
 %\cite{Nagmode2018} && {Full stack implementation (hardware, communications, web server) for traffic flow metering} && {Prototype} \\
 
+\section{IoT ready IMS architecture proposal}
+
+The implementation of a full Intersection Management System that is enable for Internet of Things solutions, is a joint effort among different fields of engineering (Hardware, software, IT, civil) and even non-engineering areas, the two main features chosen for this proposal are scalability and modularity. Scalability is desired in the cases where an initial deployment needs to expand or increase its complexity in any of its areas, for example, new communication approaches, add new sensors or hardware, develop new features or policies, etc. Modularity allows that the internal blocks of system could be modified, exchanged or enhanced without disturbing the overall function of the deployment. This criteria is achieved with the four proposed elements of this architecture: communication scheme, data model, information structure and processing blocks. A block diagram describin the architecture is shown in figure \ref{proposal_blocks}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{../fig/3/proposal_blocks.pdf}
+\caption{General overview of proposed architecture and its components. Red for the communication scheme, green for data model and blue for processing blocks}
+\label{proposal_blocks}
+\end{figure} 
+
+In order to isolate the processing tasks of the \textit{communication system}, a Publisher-Subscriber approach is selected. The benefits of this option is that data can be shared between diferent blocks without generating a dependency from publishers to subscribers. Another benefit is that exposing a defined mechanism for publishing or subscribing, allows the system to be implementation agnostic.
+
+The \textit{data model} proposed for the system includes the abstraction of the sensing elements and the intersection model. Sensor elements will include the technical parameters and will provide an interface for controlling them and accessing the data generated. The intersection has should be modeled as a unit that includes its geometry properties, traffic direction and the relation with the sensors in it.
+
+The \textit{information structure} will define the way in which configuration and runtime information is stored and exchanged. In order to keep the system language-agnostic and highly integrable, formats like JSON or markup language should be using for static files and established serialisation option are the way to go for data exchanging, because they usually provide APIs for their adoption in different platforms.
+
+Processing blocks in an IMS can be divided into four stages in the processing flow: preprocessing, feature analysis, pattern recognition and situation assessment. To keep the modularity and scalability as principles of the architecture, these block must be isolated processes, exchanging data through the defined communication system and sticking to the data model and the information structure provided. This will also allow that the processes could be sparse across different processing units
+
 
 
 
@@ -262,7 +281,9 @@ Intersection are complex scenarios that still face efficiency and safety issues,
 
 Since the establishment of IoT, intersection management system applications have moved from simulated and proposed scenarios to prototype creation and real world deployments, because the creation of sources of data and the implementation of computing systems is not longer expensive as it was 5 or more years ago.
 
-Oncoming advances in computing capabilities, low-power platforms, and a variety of communication protocols, open a door to newer and optimized solutions. Also, these allow the generation of joint solution with a wider scope, not just for transportation, but for social or environmental scenarios, having a higher impact on society.
+The two main contributions derived from this work is a comprehensive review of intersection management systems and a proposed scalable and modular architecture for traffic monitoring at an intersection enable for its integration with IoT systems.
+
+Oncoming advances in computing capabilities, low-power platforms, and a variety of communication protocols, open a door to newer and optimized solutions. Also, these allow the generation of joint solutions with a wider scope, not just for transportation, but for social or environmental scenarios, having a higher impact on society.
 
 
 \bibliography{IEEEabrv,../bibliography,iot}
