@@ -62,6 +62,10 @@ On the other side, the Internet of Things has enabled the creation of new source
 
 In section II, a general description and a review on intersection management systems are presented, from early developments until recent works. Section III describe how IoT-based solutions have been adopted into the field of transportation, specially for optimisation and control at intersections. Finally, in section IV some comments are given and future steps in the area are discussed.
 
+\input{table_comp}
+\end{xtabular*}
+\end{table*}
+
 \section{Intersection Management Systems}
 
 
@@ -77,14 +81,39 @@ Different types of applications and systems are conceived to address these issue
 
 \subsection{Components in IMS application}
 
-Intersection monitoring is a required task to be done within intelligent transportation systems for high-level applications like traffic analysis, counting and classification of vehicles or pedestrians, event prediction, incident detection and security and surveillance systems. Those applications have to take into account some of the elements depicted in figure \ref{arch} and developments in IMS have a wide range of approaches and objectives. In order to study IMS applications, five components have been defined, which are present on these applications, and on most cases, more than one component could be involved in the same development. In figure  \ref{imsComps} a graph is presented, showing aforementioned components and elements within them, and next, a description of each component is given.
+Intersection monitoring is a required task to be done within intelligent transportation systems for high-level applications like traffic analysis, counting and classification of vehicles or pedestrians, event prediction, incident detection and security and surveillance systems. Those applications have to take into account some of the elements depicted in figure \ref{arch} and developments in IMS have a wide range of approaches and objectives. In order to study IMS applications, five components have been defined which are present on those applications, and on most cases, more than one component could be involved in the same development. Table \ref{imsComps} describe aforementioned components and elements within them along with a brief description.
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[scale=0.17]{../fig/2/ims_graph5.png}
-\caption{Components of an Intersection Management System application.}
-\label{imsComps}
-\end{figure}
+
+
+%INTERSECTION MANAGEMENT SYSTEM	Application	Monitoring	Recognition
+%			Detection
+%			Tracking
+%		Control	Traffic control
+%			Warning advertisement
+%			Traffic rules supervision
+%		Analysis	Traffic flow
+%			Path analysis
+%			Context and behavior
+%	Data source	Infrastructure	Presence sensors
+%			Range sensors
+%			Image sensors 
+%			RFID and wireless
+%		Vehicle	Position
+%			State 
+%			Travel information
+%	Target		Pedestrians
+%			Bicycles / Motorcycles
+%			Small Vehicles
+%			Large Vehicles 
+%	Communication		V2V -Vehicle -to-vehicle
+%			V2I - Vehicle-2-vehicle
+%			V2X
+%	Implementation		Real
+%			Simulation
+%			Augmented Reality
+%			Dataset
+%			Scala-model
+
 
 \subsubsection{Application}
 
@@ -183,8 +212,9 @@ In the implementation component, with the reduced cost of making new sensors, it
 \hline
 \textbf{Reference} & \textbf{Comment} & \textbf{Implementation} \\
 \hline
+
 {\cite{Tan2011}} &
-{Proposal of using IOT-based set of sensors as source of data for intersection control} &
+{Proposal of using an IOT-based set of sensors as source of data for intersection control.\vfill} &
 {Simulation}\\
 
 \hline
